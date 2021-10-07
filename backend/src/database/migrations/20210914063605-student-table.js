@@ -18,16 +18,25 @@ module.exports = {
         onDelete: 'SET NULL'
      }, 
      first_name: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
+        allowNull: false
      }, 
      last_name: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
+        allowNull: false
      }, 
      birthday: {
-        type: DataTypes.DATEONLY
+        type: DataTypes.DATEONLY,
+        allowNull: false
      }, 
      password: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
+        allowNull: false
+     },
+
+     email: {
+         type: DataTypes.STRING,
+         allowNull: false
      },
 
     created_at:{

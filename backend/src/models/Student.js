@@ -5,7 +5,7 @@ class Student extends Model {
       super.init(            {
          first_name: DataTypes.STRING,
          last_name: DataTypes.STRING,
-         // email: DataTypes.STRING,
+         email: DataTypes.STRING,
          birthday: DataTypes.DATEONLY,
          password: DataTypes.STRING
       }, {

@@ -12,7 +12,7 @@ module.exports = {
        const class_ = await Class.findByPk(class_id);
 
        if(!class_){
-        return res.status(400).json({error: 'Class not found'});
+        return res.status(406).json({error: 'Class not found'});
         }
         console.log({admin_id,title, body})
         const message = await Message.create({admin_id,title, body});

@@ -10,7 +10,7 @@
     "tb": "sequelize migration:create --name=create-tables",
     "tb2": "sequelize migration:create --name=add-age-field-to-users",
     "mi": "sequelize db:migrate",
-    "miu": "sequelize db:migrate:undo"
+    "miu": "sequelize db:migrate:undo:all"
   },
   "keywords": [],
   "author": "",

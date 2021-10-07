@@ -14,4 +14,6 @@ routes.post('/:class_id/messages', MessageController.store);
 
 routes.post('/admins', AdminController.store);
 
+routes.post('/login', StudentController.login);
+
 module.exports = routes;
