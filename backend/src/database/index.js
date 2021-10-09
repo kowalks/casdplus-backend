@@ -10,6 +10,7 @@ const Exam = require('../models/Exam');
 const Message = require('../models/Message');
 const Admin = require('../models/Admin');
 const AdminToken = require('../models/AdminToken');
+const StudentToken = require('../models/StudentToken');
 
 const connection = new Sequelize(dbConfig);
 
@@ -22,6 +23,7 @@ Exam.init(connection);
 Message.init(connection);
 Admin.init(connection);
 AdminToken.init(connection);
+StudentToken.init(connection);
 
 Student.associate(connection.models);
 Event.associate(connection.models);
@@ -31,6 +33,7 @@ Message.associate(connection.models);
 Class.associate(connection.models);
 Admin.associate(connection.models);
 AdminToken.associate(connection.models);
+StudentToken.associate(connection.models);
 
 
 module.exports = connection;

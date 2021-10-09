@@ -9,34 +9,41 @@ module.exports = {
     },
 
     async login(req, res) {
-        const  {email, password} = req.body;
-        const student = await Student.findOne({ where: { email: email} });
+        const { username, password } = req.body;
 
-        if(student == null || student.password != password)
-            return res.status(406).json({error: 'user/email invalid'})
-        
-       student.password = null;
-        return res.json(student);
+        // sanity check
+        if (!username || !password) {
+            return res.status(400).send('Bad Request! Missing username or password.');
+        }
+
+        try {
+            let student = await Student.authenticate(username, password);
+            student = await student.authorize();
+            return res.json(student);
+
+        } catch (err) {
+            return res.status(406).json({ error: 'Invalid username or password' })
+        }
     },
 
     async store(req, res) {
-        const {class_id, first_name, last_name, birthday, password, email} = req.body;
+        const { class_id, first_name, last_name, birthday, password, email, username } = req.body;
 
         console.log("class_id: ", class_id)
         const class_ = await Class.findByPk(class_id);
 
-        if(!class_){
-            return res.status(406).json({error: 'Class not found'});
-         }
+        if (!class_) {
+            return res.status(406).json({ error: 'Class not found' });
+        }
 
-        const student_found = await Student.findOne({ where: { email: email} });
-        if(student_found == null){
-            const student = await Student.create({first_name, last_name, birthday, password, email});
+        const student_found = await Student.findOne({ where: { email: email } });
+        if (student_found == null) {
+            const student = await Student.create({ first_name, last_name, birthday, password, email, username });
             class_.addStudent(student);
             return res.json(student);
         }
 
 
-        return res.status(406).json({error: 'email already existis'});
+        return res.status(406).json({ error: 'email already existis' });
     }
 }

@@ -21,7 +21,11 @@ module.exports = {
      birthday: {
         type: DataTypes.DATEONLY,
         allowNull: false
-     }, 
+     },
+     username: {
+      type: DataTypes.STRING,
+      allowNull: false
+   },
      password: {
         type: DataTypes.STRING,
         allowNull: false

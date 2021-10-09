@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 
-class AdminToken extends Model {
+class StudentToken extends Model {
    static init(connection) {
       super.init({
-         admin_id: DataTypes.INTEGER,
+         student_id: DataTypes.INTEGER,
          token: DataTypes.STRING
       }, {
          sequelize: connection,
@@ -13,12 +13,12 @@ class AdminToken extends Model {
    };
 
    static associate(models) {
-      this.belongsTo(models.Admin)
+      this.belongsTo(models.Student)
    };
 
    // generate random access token
-   static async generate (adminId) {
-      if (!adminId) {
+   static async generate (studentId) {
+      if (!studentId) {
          throw new Error('AuthToken requires a user ID')
       }
 
@@ -29,10 +29,10 @@ class AdminToken extends Model {
       for (var i = 0; i < 15; i++) {
          token += str.charAt(Math.floor(Math.random() * str.length));
       }
-
-      return await AdminToken.create({token, admin_id: adminId});
+      
+      return await StudentToken.create({token, student_id: studentId});
    }
 
 }
 
-module.exports = AdminToken;
+module.exports = StudentToken;

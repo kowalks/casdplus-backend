@@ -14,13 +14,11 @@ routes.post('/admin/admins', AdminController.store);
 
 
 // Student routes
+
+routes.get('/student/login', StudentController.login);
+
 routes.post('/classes', ClassController.store);
 
 routes.post('/:class_id/messages', MessageController.store);
-
-
-
-routes.post('/login', StudentController.login);
-
 
 module.exports = routes;
