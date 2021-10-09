@@ -1,6 +1,6 @@
 module.exports = {
     dialect: 'postgres',
-    hotst: 'localhost',
+    hotst: DATABASE_URL,
     username: 'test',
     password: 'test',
     database: 'casdplus',
