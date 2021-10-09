@@ -10,4 +10,5 @@ app.use(routes);
 
 console.log('HSDASIHDAUIHSDSDIUAHSDUI')
 
-app.listen(8000);
+app.listen(process.env.PORT || 3000,
+    () => console.log('Server is running...'));

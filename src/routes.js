@@ -21,4 +21,9 @@ routes.post('/classes', ClassController.store);
 
 routes.post('/:class_id/messages', MessageController.store);
 
+// Hello World
+routes.get('/', function (req, res) {
+    res.send('<h1>Hello World </h1>')
+})
+
 module.exports = routes;
