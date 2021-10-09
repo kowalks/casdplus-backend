@@ -10,13 +10,6 @@ module.exports = {
         allowNull:false,
         autoIncrement: true
      }, 
-     class_id: {
-        type: DataTypes.INTEGER, 
-        allowNull:true,
-        references: { model: 'classes', key: 'id'},
-        onUpdate: 'CASCADE',
-        onDelete: 'SET NULL'
-     }, 
      first_name: {
         type: DataTypes.STRING,
         allowNull: false

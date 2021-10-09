@@ -11,7 +11,8 @@ module.exports = {
         autoIncrement: true
      }, 
      name: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
+        allowNull: false
      }, 
      date: {
         type: DataTypes.DATEONLY

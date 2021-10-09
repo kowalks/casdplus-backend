@@ -7,11 +7,11 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon src/server.js",
     "db": "sequelize db:create",
-    "tb": "sequelize migration:create --name=create-tables",
-    "tb2": "sequelize migration:create --name=add-age-field-to-users",
-    "mi": "sequelize db:migrate",
+    "tb": "sequelize migration:create --name=admin-token",
+    "mi": "sequelize db:migrate && sequelize db:seed:all",
     "miu": "sequelize db:migrate:undo",
-    "mig": "sequelize db:migrate:undo:all"
+    "mig": "sequelize db:migrate:undo:all",
+    "seed": "sequelize db:seed:all"
   },
   "keywords": [],
   "author": "",

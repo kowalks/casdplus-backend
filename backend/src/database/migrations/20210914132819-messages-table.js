@@ -18,10 +18,12 @@ module.exports = {
           onDelete: 'CASCADE'
       }, 
       title: {
-          type: DataTypes.STRING
+          type: DataTypes.STRING,
+          allowNull: false
       }, 
       body: {
-          type: DataTypes.STRING
+          type: DataTypes.STRING,
+          allowNull: false
       },
       created_at:{
         type: DataTypes.DATE,

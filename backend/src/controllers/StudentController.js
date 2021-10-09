@@ -1,4 +1,5 @@
 const Student = require('../models/Student');
+const Class = require('../models/Class');
 
 module.exports = {
     async index(req, res) {
@@ -20,12 +21,23 @@ module.exports = {
 
     async store(req, res) {
         const {class_id, first_name, last_name, birthday, password, email} = req.body;
-        
+
+        console.log("class_id: ", class_id)
+        const class_ = await Class.findByPk(class_id);
+
+        if(!class_){
+            return res.status(406).json({error: 'Class not found'});
+         }
+
         const student_found = await Student.findOne({ where: { email: email} });
         if(student_found == null){
-            const student = await Student.create({class_id, first_name, last_name, birthday, password, email});
+            const student = await Student.create({first_name, last_name, birthday, password, email});
+            class_.addStudent(student);
+            console.log("done")
             return res.json(student);
         }
+
+
         return res.status(406).json({error: 'email already existis'});
     }
 }

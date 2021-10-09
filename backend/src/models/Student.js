@@ -15,13 +15,8 @@ class Student extends Model {
 
    static associate(models) {
       this.belongsToMany(models.Exam, {foreignKey: 'student_id', through: 'student_exam'});
-      this.belongsTo(models.Class, {
-         foreignKey: 'class_id',
-         target: 'id'
-        })
+      this.belongsToMany(models.Class, {foreignKey: 'student_id', through: 'student_class'});
    } 
-
-
 }
 
 module.exports = Student;

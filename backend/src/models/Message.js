@@ -17,7 +17,7 @@ class Message extends Model {
       this.belongsTo(models.Admin, { 
       foreignKey: 'admin_id',
       target: 'id'});
-      this.belongsToMany(models.Class, {foreignKey: 'class_id', through: 'message_class'});
+      this.belongsToMany(models.Class, {foreignKey: 'message_id', through: 'message_class'});
    } 
 
 }

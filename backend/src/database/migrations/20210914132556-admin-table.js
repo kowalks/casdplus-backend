@@ -11,13 +11,20 @@ module.exports = {
         autoIncrement: true
      }, 
      first_name: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
+        allowNull: false
      }, 
      last_name: {
-        type: DataTypes.STRING
-     }, 
+        type: DataTypes.STRING,
+        allowNull: false
+     },
+     username: {
+      type: DataTypes.STRING,
+      allowNull: false
+   }, 
      password: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
+        allowNull: false
      },
 
     created_at:{

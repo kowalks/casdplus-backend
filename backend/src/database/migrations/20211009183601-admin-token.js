@@ -3,22 +3,24 @@
 module.exports = {
   up: async (queryInterface, DataTypes) => {
  
-     await queryInterface.createTable('classes', { 
+     await queryInterface.createTable('admin_tokens', { 
        id: {
          type: DataTypes.INTEGER, 
          primaryKey:true, 
          allowNull:false,
          autoIncrement: true
-     }, 
-     name: {
+     },
+     admin_id: {
+        type: DataTypes.INTEGER,
+        references: { model: 'admins', key: 'id'},
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
+     },
+     token: {
         type: DataTypes.STRING,
         allowNull: false
-     }, 
-     schedule: {
-        type: DataTypes.STRING
-     }
-  ,
-    created_at:{
+     },
+     created_at:{
       type: DataTypes.DATE,
       allowNull: false,
     },
@@ -34,7 +36,7 @@ module.exports = {
 
   down: async (queryInterface, DataTypes) => {
   
-     await queryInterface.dropTable('classes');
+     await queryInterface.dropTable('admin_tokens');
 
   }
 };
