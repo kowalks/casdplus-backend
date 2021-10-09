@@ -73,12 +73,39 @@ Returns
 ## File Tree
 
 ```bash
-└───backend
-    └───src
-        ├───config
-        ├───controllers
-        ├───database
-        │   ├───migrations
-        │   └───seeders
-        └───models
+.
+├── docker-compose.yml
+├── LICENSE
+├── package.json
+├── package-lock.json
+├── README.md
+└── src
+    ├── config
+    │   └── database.js
+    ├── controllers
+    │   ├── AdminController.js
+    │   ├── ClassController.js
+    │   ├── ExamController.js
+    │   ├── MessageController.js
+    │   └── StudentController.js
+    ├── database
+    │   ├── index.js
+    │   ├── migrations
+    │   └── seeders
+    ├── middleware.js
+    ├── models
+    │   ├── Absence.js
+    │   ├── Admin.js
+    │   ├── AdminToken.js
+    │   ├── Class.js
+    │   ├── Event.js
+    │   ├── Exam.js
+    │   ├── message_class.js
+    │   ├── Message.js
+    │   ├── Question.js
+    │   ├── student_exam.js
+    │   ├── Student.js
+    │   └── StudentToken.js
+    ├── routes.js
+    └── server.js
 ```
