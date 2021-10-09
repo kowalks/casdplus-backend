@@ -1,8 +1,8 @@
 module.exports = {
     dialect: 'postgres',
-    hotst: DATABASE_URL,
-    username: 'test',
-    password: 'test',
+    hotst: process.env.DATABASE_URL,
+    username: 'postgress',
+    password: 'password',
     database: 'casdplus',
     port:5432,
     define: {
