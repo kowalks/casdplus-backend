@@ -3,12 +3,12 @@
 module.exports = {
   up: async (queryInterface, DataTypes) => {
  
-     await queryInterface.createTable('student_exam', { 
-      student_id: {
+     await queryInterface.createTable('class_exam', { 
+      class_id: {
         type: DataTypes.INTEGER, 
         primaryKey:true, 
         allowNull:false,
-        references: { model: 'students', key: 'id'},
+        references: { model: 'classes', key: 'id'},
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'
      }, 
@@ -35,7 +35,7 @@ module.exports = {
 
   down: async (queryInterface, DataTypes) => {
   
-     await queryInterface.dropTable('student_exam');
+     await queryInterface.dropTable('class_exam');
 
   }
 };

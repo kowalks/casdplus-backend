@@ -22,10 +22,10 @@ module.exports = {
         try {
             let admin = await Admin.authenticate(username, password);
             admin = await admin.authorize();
-            return res.json(user);
+            return res.json(admin);
 
         } catch (err) {
-            return res.status(400).send('invalid username or password')
+            return res.status(406).json({error: 'Invalid username or password'})
         }
     }
 

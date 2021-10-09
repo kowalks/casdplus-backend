@@ -3,13 +3,13 @@ const dbConfig = require('../config/database');
 
 const Student = require('../models/Student');
 const Class = require('../models/Class');
-const Message_class = require('../models/message_class');
 const Event = require('../models/Event');
 const Absence = require('../models/Absence');
 const Question = require('../models/Question');
 const Exam = require('../models/Exam');
 const Message = require('../models/Message');
 const Admin = require('../models/Admin');
+const AdminToken = require('../models/AdminToken');
 
 const connection = new Sequelize(dbConfig);
 
@@ -21,6 +21,7 @@ Question.init(connection);
 Exam.init(connection);
 Message.init(connection);
 Admin.init(connection);
+AdminToken.init(connection);
 
 Student.associate(connection.models);
 Event.associate(connection.models);
@@ -28,6 +29,8 @@ Absence.associate(connection.models);
 Question.associate(connection.models);
 Message.associate(connection.models);
 Class.associate(connection.models);
+Admin.associate(connection.models);
+AdminToken.associate(connection.models);
 
 
 module.exports = connection;

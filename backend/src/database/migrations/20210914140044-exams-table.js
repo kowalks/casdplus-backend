@@ -15,10 +15,16 @@ module.exports = {
         allowNull: false
      }, 
      date: {
-        type: DataTypes.DATEONLY
+        type: DataTypes.DATEONLY,
+        allowNull: false
      }, 
      published: {
-        type: DataTypes.BOOLEAN
+        type: DataTypes.BOOLEAN,
+        allowNull: false
+     },
+     url: {
+        type: DataTypes.STRING,
+        allowNull: false
      },
     created_at:{
       type: DataTypes.DATE,

@@ -16,4 +16,6 @@ routes.post('/admins', AdminController.store);
 
 routes.post('/login', StudentController.login);
 
+routes.get('/admin/login', AdminController.login);
+
 module.exports = routes;

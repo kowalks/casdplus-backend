@@ -18,7 +18,7 @@ class AdminToken extends Model {
 
    // generate random access token
    static async generate (adminId) {
-      if (!userId) {
+      if (!adminId) {
          throw new Error('AuthToken requires a user ID')
       }
 

@@ -13,7 +13,7 @@ class Exam extends Model {
 
 
    static associate(models) {
-      this.belongsToMany(models.Student, {foreignKey: 'exam_id', through: 'student_exam'});
+      this.belongsToMany(models.Student, {foreignKey: 'exam_id', through: 'class_exam'});
    } 
 
 }
