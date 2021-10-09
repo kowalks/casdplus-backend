@@ -5,17 +5,22 @@ const MessageController = require('./controllers/MessageController');
 const AdminController = require('./controllers/AdminController');
 const routes = express.Router();
 
+// Admin routes
+routes.post('/admin/students', StudentController.store);
 
+routes.get('/admin/login', AdminController.login);
+
+routes.post('/admin/admins', AdminController.store);
+
+
+// Student routes
 routes.post('/classes', ClassController.store);
-
-routes.post('/students', StudentController.store);
 
 routes.post('/:class_id/messages', MessageController.store);
 
-routes.post('/admins', AdminController.store);
+
 
 routes.post('/login', StudentController.login);
 
-routes.get('/admin/login', AdminController.login);
 
 module.exports = routes;
