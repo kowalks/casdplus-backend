@@ -17,14 +17,18 @@ Create and run docker container
 Install backend with npm
 
 ```bash
-  cd ../backend
   npm install
 ```
 
 Run database migrations
 ```bash
   npm run migrate
-  npm num seeds
+  npm run seed
+```
+
+Start server in dev mode
+```bash
+  npm run dev
 ```
 
 
