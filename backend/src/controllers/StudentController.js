@@ -33,7 +33,6 @@ module.exports = {
         if(student_found == null){
             const student = await Student.create({first_name, last_name, birthday, password, email});
             class_.addStudent(student);
-            console.log("done")
             return res.json(student);
         }
 
