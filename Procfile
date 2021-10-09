@@ -1,5 +1,2 @@
-a: npm run migrateua
-b: npm run migrate
-c: npm run seed
-release: npm run start
+release: npm run migrateua && npm run migrate && npm run seed
 web: npm run prod
