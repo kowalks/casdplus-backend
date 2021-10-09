@@ -12,7 +12,8 @@
     "migrate": "sequelize db:migrate",
     "migrateu": "sequelize db:migrate:undo",
     "migrateua": "sequelize db:migrate:undo:all",
-    "seed": "sequelize db:seed:all"
+    "seed": "sequelize db:seed:all",
+    "prod": "node src/server.js"
   },
   "keywords": [],
   "author": "",
