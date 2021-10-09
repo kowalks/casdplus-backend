@@ -1,12 +1,10 @@
 module.exports = {
-    dialect: 'postgres',
-    hotst: process.env.DATABASE_URL,
-    username: 'postgress',
-    password: 'password',
-    database: 'casdplus',
-    port:5432,
-    define: {
-        timestamps: true,
-        underscored: true,
+  use_env_variable: "DATABASE_URL",
+  dialect: "postgres",
+  dialectOptions: {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false,
     },
+  },
 };
