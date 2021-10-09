@@ -1,7 +1,7 @@
 
 # CASDplus - backend
 
-This is the beckend for CASDplus project. Authors
+This is the backend for CASDplus project. Authors
 - Guilherme Kowalczuk ([@kowalks](https://github.com/kowalks))
 - Yuri Gama ([@yuri-gama](https://github.com/yuri-gama/))
 
