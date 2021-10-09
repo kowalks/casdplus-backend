@@ -25,6 +25,7 @@ module.exports = {
             return res.json(admin);
 
         } catch (err) {
+            console.log(err)
             return res.status(406).json({ error: 'Invalid username or password' })
         }
     }
