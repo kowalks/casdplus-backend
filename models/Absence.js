@@ -7,9 +7,8 @@ class Absence extends Model {
             justification: DataTypes.STRING
       }, {
             sequelize: connection,
-            singular: 'event',
-            plural: 'events',
-            tableName: 'event'
+            tableName: 'absence',
+            freezeTableName: true,
       })
    }
 }

@@ -10,6 +10,8 @@ class Admin extends Model {
             password: DataTypes.STRING
         }, {
             sequelize: connection,
+            tableName: 'admins',
+            freezeTableName: true,
         })
     };
 
