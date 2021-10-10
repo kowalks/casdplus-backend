@@ -1,5 +1,4 @@
 const Sequelize = require('sequelize');
-const dbConfig = require('../config/config');
 
 const Student = require('../models/Student');
 const Class = require('../models/Class');
@@ -12,7 +11,28 @@ const Admin = require('../models/Admin');
 const AdminToken = require('../models/AdminToken');
 const StudentToken = require('../models/StudentToken');
 
-const connection = new Sequelize(dbConfig.production);
+const config = require('../config/config.json')
+
+if (process.env.DATABASE_URL) {
+    connection = new Sequelize(config.production)
+} else {
+    connection = new Sequelize(config.development)
+}
+
+// const { configure } = require('sequelize-pg-utilities')
+// const config = require('../config/config.json')
+// const { name, user, password, options } = configure(config)
+// console.log(name, user, password, options)
+// const connection = new Sequelize(name, user, password, options);
+// console.log(connection)
+
+
+// const dbConfig = require('../config/database.js')
+// const connection = new Sequelize(dbConfig)
+// console.log(connection)
+
+// const dbConfig = require('../config/config.json')
+// console.log(connection)
 
 Student.init(connection);
 Class.init(connection);

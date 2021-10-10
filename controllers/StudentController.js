@@ -22,6 +22,7 @@ module.exports = {
             return res.json(student);
 
         } catch (err) {
+            console.log(err)
             return res.status(406).json({ error: 'Invalid username or password' })
         }
     },

@@ -5,8 +5,16 @@
     "database": "casdplus",
     "host": "localhost",
     "dialect": "postgres",
-    "port": 15432
+    "port": 15432,
+    "define": {
+      "timestamps": true,
+      "underscored": true
+    },
+    "pool": null,
+    "hotst": "localhost"
   },
+
+  
   "test": {
     "username": "root",
     "password": null,
