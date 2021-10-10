@@ -14,12 +14,15 @@ const StudentToken = require("../models/StudentToken");
 const config = require("../config/config.json");
 
 if (process.env.DATABASE_URL) {
+  console.log("Estou fazendo tudo certo :)");
   connection = new Sequelize(process.env.DATABASE_URL, {
     dialect: "postgres",
     protocol: "postgres",
     dialectOptions: {
-      ssl: true,
-      rejectUnauthorized: false
+      ssl: {
+        require: true,
+        rejectUnauthorized: false, // <<<<<<< YOU NEED THIS
+      },
     },
   });
 } else {
