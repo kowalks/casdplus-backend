@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const dbConfig = require('../config/database');
+const dbConfig = require('../config/config');
 
 const Student = require('../models/Student');
 const Class = require('../models/Class');
@@ -12,7 +12,7 @@ const Admin = require('../models/Admin');
 const AdminToken = require('../models/AdminToken');
 const StudentToken = require('../models/StudentToken');
 
-const connection = new Sequelize(dbConfig);
+const connection = new Sequelize(dbConfig.production);
 
 Student.init(connection);
 Class.init(connection);
