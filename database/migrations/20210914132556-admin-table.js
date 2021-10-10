@@ -3,7 +3,7 @@
 module.exports = {
   up: async (queryInterface, DataTypes) => {
  
-     await queryInterface.createTable('admins', { 
+     await queryInterface.createTable('Admins', { 
       id: {
         type: DataTypes.INTEGER, 
         primaryKey:true, 

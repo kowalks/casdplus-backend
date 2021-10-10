@@ -24,6 +24,10 @@ if (process.env.DATABASE_URL) {
         rejectUnauthorized: false, // <<<<<<< YOU NEED THIS
       },
     },
+    define: {
+      timestamps: true,
+      underscored: true,
+    },
   });
 } else {
   connection = new Sequelize(config.development);
