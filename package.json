@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon src/server.js",
+    "dev": "nodemon ./server.js",
     "db": "sequelize db:create",
     "tb": "sequelize migration:create --name=student-token",
     "start": "sequelize db:migrate && sequelize db:seed:all",
@@ -13,7 +13,7 @@
     "migrateu": "sequelize db:migrate:undo",
     "migrateua": "sequelize db:migrate:undo:all",
     "seed": "sequelize db:seed:all",
-    "prod": "node src/server.js"
+    "prod": "node ./server.js"
   },
   "keywords": [],
   "author": "",
