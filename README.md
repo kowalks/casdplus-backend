@@ -39,8 +39,10 @@ Start server in dev mode
 #### Login
 
 ```http
-  GET /admin/login
+  POST /admin/login
 ```
+
+Login info shoud be passed on request body. 
 
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
@@ -51,7 +53,7 @@ Start server in dev mode
 Returns 
 - `400: Bad Request` if request doesn't contain specified parameters.
 - `406: Not Acceptable` if username or password is incorrect.
-- JSON containing session tokens if username and password match a valid admin.
+- JSON containing `token`, the session token, if username and password match a valid admin.
 
 
 #### Register Student
@@ -73,6 +75,41 @@ Returns
 - `406: Not Acceptable` If theres no valid class or the email is already used.
 - JSON containing information for the created user.
 
+
+
+### Student
+
+#### Login
+
+```http
+  POST /student/login
+```
+
+Login info shoud be sent on request body. 
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `username`| `string` | **Required**. Username for requested student |
+| `password`| `string` | **Required**. Password for student | 
+
+
+Returns 
+- `400: Bad Request` if request doesn't contain specified parameters.
+- `406: Not Acceptable` if username or password is incorrect.
+- JSON containing `token`, the session token, if username and password match a valid student.
+
+
+#### Info
+
+```http
+  GET /student/
+```
+
+Auth info should be sent on the request header in the form of a Bearer Authentication `Authorization: Bearer <token>`
+
+Returns 
+- `401: Unauthorized` if request doesn't contain specified parameters.
+- JSON containing `id`, `fist_name`, `last_name`, `email`, `username`, `birthday`, `password`, `createdAt` and `updatedAt`.
 
 ## File Tree
 
