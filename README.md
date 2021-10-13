@@ -85,7 +85,7 @@ Returns
   POST /student/login
 ```
 
-Login info shoud be sent on request body. 
+Login info shoud be sent in JSON format on request body. 
 
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
@@ -108,7 +108,7 @@ Returns
 Auth info should be sent on the request header in the form of a Bearer Authentication `Authorization: Bearer <token>`
 
 Returns 
-- `401: Unauthorized` if request doesn't contain specified parameters.
+- `401: Unauthorized` if request doesn't contain a valid auth token.
 - JSON containing `id`, `fist_name`, `last_name`, `email`, `username`, `birthday`, `password`, `createdAt` and `updatedAt`.
 
 ## File Tree
