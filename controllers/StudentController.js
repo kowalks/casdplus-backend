@@ -19,7 +19,7 @@ module.exports = {
         try {
             let student = await Student.authenticate(username, password);
             student = await student.authorize();
-            return res.json(student);
+            return res.json({ token: student.token.token });
 
         } catch (err) {
             console.log(err)

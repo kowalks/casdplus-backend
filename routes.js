@@ -8,14 +8,14 @@ const routes = express.Router();
 // Admin routes
 routes.post('/admin/students', StudentController.store);
 
-routes.get('/admin/login', AdminController.login);
+routes.post('/admin/login', AdminController.login);
 
 routes.post('/admin/admins', AdminController.store);
 
 
 // Student routes
 
-routes.get('/student/login', StudentController.login);
+routes.post('/student/login', StudentController.login);
 
 routes.post('/classes', ClassController.store);
 
