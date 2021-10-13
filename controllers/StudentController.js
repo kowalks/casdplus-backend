@@ -1,5 +1,6 @@
 const Student = require('../models/Student');
 const Class = require('../models/Class');
+const StudentToken = require('../models/StudentToken')
 
 module.exports = {
     async index(req, res) {
@@ -46,5 +47,25 @@ module.exports = {
 
 
         return res.status(406).json({ error: 'email already existis' });
+    },
+
+    async info(req, res) {
+        const bearer_token = req.headers.authorization
+        if (bearer_token == null) {
+            return res.status(401).send('No token provided.')
+        }
+
+        const token = bearer_token.substring(7);
+        const student_token = await StudentToken.findOne({ where: { token } });
+
+        if (student_token == null) {
+            return res.status(401).send('Auth token is not valid.')
+        }
+
+        const id = student_token.student_id
+        const student = await Student.findOne({where: {id}})
+
+        return res.status(200).json(student)
+        // 
     }
 }
