@@ -10,6 +10,8 @@ routes.post('/admin/students', StudentController.store);
 
 routes.post('/admin/login', AdminController.login);
 
+routes.get('/admin/', AdminController.info)
+
 routes.post('/admin/admins', AdminController.store);
 
 

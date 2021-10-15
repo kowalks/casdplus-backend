@@ -1,4 +1,5 @@
 const Admin = require('../models/Admin');
+const AdminToken = require('../models/AdminToken')
 
 module.exports = {
     async store(req, res) {
@@ -22,12 +23,33 @@ module.exports = {
         try {
             let admin = await Admin.authenticate(username, password);
             admin = await admin.authorize();
-            return res.json(admin);
+            return res.json({ token: admin.token.token });
 
         } catch (err) {
             console.log(err)
             return res.status(406).json({ error: 'Invalid username or password' })
         }
+    },
+
+    async info(req, res) {
+        const bearer_token = req.headers.authorization
+        if (bearer_token == null) {
+            return res.status(401).send('No token provided.')
+        }
+
+        const token = bearer_token.substring(7);
+        console.log(token)
+        const admin_token = await AdminToken.findOne({ where: { token } });
+
+        if (admin_token == null) {
+            return res.status(401).send('Auth token is not valid.')
+        }
+
+        const id = admin_token.admin_id
+        const admin = await Admin.findOne({where: {id}})
+
+        return res.status(200).json(admin)
+        // 
     }
 
 }
