@@ -1,9 +1,9 @@
 _id: req_61bc92f38c7442f89015537d9e89f8a8
 type: Request
 parentId: fld_6776525d1b794745addf5256c426b475
-modified: 1634242566087
+modified: 1634406537016
 created: 1631634447215
-url: localhost:3000/admin/login
+url: "{{ _.base_url }}/admin/login"
 name: Login
 description: ""
 method: POST

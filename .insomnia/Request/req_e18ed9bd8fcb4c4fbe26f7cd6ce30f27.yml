@@ -1,9 +1,9 @@
 _id: req_e18ed9bd8fcb4c4fbe26f7cd6ce30f27
 type: Request
 parentId: fld_81fd3815dbda45deb4ba5c49db16e7ee
-modified: 1634144336739
+modified: 1634406571566
 created: 1634138972522
-url: localhost:3000/student/
+url: "{{ _.base_url }}/student/"
 name: Info
 description: ""
 method: GET

@@ -1,9 +1,9 @@
 _id: req_f4800997c5414a82b6fd68909b0d44e4
 type: Request
 parentId: fld_6776525d1b794745addf5256c426b475
-modified: 1634242853336
+modified: 1634406542405
 created: 1634242634404
-url: localhost:3000/admin/
+url: "{{ _.base_url }}/admin/"
 name: Info
 description: ""
 method: GET
