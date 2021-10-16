@@ -49,9 +49,22 @@ class Student extends Model {
     return { student, token };
   }
 
-  logout = async function (token) {
-    StudentToken.destroy({ where: { token } });
-  };
+  static async validate(req, res) {
+    const bearer_token = req.headers.authorization;
+    if (bearer_token == null) {
+      return [res.status(401).send("No token provided."), null];
+    }
+
+    const token = bearer_token.substring(7);
+    const student_token = await StudentToken.findOne({ where: { token } });
+
+    if (student_token == null) {
+      return [res.status(401).send("Auth token is not valid."), null];
+    }
+
+    const id = student_token.student_id;
+    return [res.status(200), id];
+  }
 }
 
 module.exports = Student;
