@@ -1,0 +1,37 @@
+_id: req_db0d4e61787c48d0a2d198ebf599104d
+type: Request
+parentId: fld_81fd3815dbda45deb4ba5c49db16e7ee
+modified: 1631634593254
+created: 1631634447213
+url: localhost:3333/students
+name: Student 1
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: |-
+    {
+    				 "first_name": "Joseh 32132",
+             "last_name": "souza",
+             "birthday": "2021-09-22",
+             "password": "bdsadasldlq"
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_96c05f6bbcb142a68c0bca803a06b647
+authentication:
+  type: basic
+  useISO88591: false
+  disabled: true
+  username: ""
+  password: ""
+metaSortKey: -1630850498140
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

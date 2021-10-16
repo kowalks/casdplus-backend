@@ -1,0 +1,35 @@
+_id: req_61bc92f38c7442f89015537d9e89f8a8
+type: Request
+parentId: fld_6776525d1b794745addf5256c426b475
+modified: 1634242566087
+created: 1631634447215
+url: localhost:3000/admin/login
+name: Login
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: |-
+    {
+    	"username": "admin",
+    	"password": "admin"
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_399abcf83661475883841b73c8c20077
+authentication:
+  type: basic
+  useISO88591: false
+  disabled: true
+  username: ""
+  password: ""
+metaSortKey: -1631672050243
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

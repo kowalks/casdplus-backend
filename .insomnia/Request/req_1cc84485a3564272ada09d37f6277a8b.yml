@@ -1,0 +1,31 @@
+_id: req_1cc84485a3564272ada09d37f6277a8b
+type: Request
+parentId: fld_6be90c85bf7d4ce8b4d50184c53cbecd
+modified: 1631676887438
+created: 1631675432188
+url: localhost:3333/1/messages
+name: First Message
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: |-
+    {
+    	"title": "Title", 
+    	"body": "Body", 
+    	"admin_id": 1
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_ae00e1a89f0148d8a60b6bdeead986f4
+authentication: {}
+metaSortKey: -1631675432188
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

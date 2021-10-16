@@ -1,0 +1,23 @@
+_id: req_e18ed9bd8fcb4c4fbe26f7cd6ce30f27
+type: Request
+parentId: fld_81fd3815dbda45deb4ba5c49db16e7ee
+modified: 1634144336739
+created: 1634138972522
+url: localhost:3000/student/
+name: Info
+description: ""
+method: GET
+body: {}
+parameters: []
+headers: []
+authentication:
+  type: bearer
+  token: AsWA4xroH7b79NL
+metaSortKey: -1630850498158.75
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global
