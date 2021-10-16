@@ -4,7 +4,8 @@ parentId: wrk_f01226933c244228a76acdb2435d65f5
 modified: 1634406112196
 created: 1630695119412
 name: Base Environment
-data: {}
+data:
+  base_url: "{{ scheme }}://{{ host }}{{ base_path }}"
 dataPropertyOrder: {}
 color: null
 isPrivate: false

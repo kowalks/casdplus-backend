@@ -1,7 +1,7 @@
 _id: req_6d096f14e5d74c57a157716f35ef7104
 type: Request
 parentId: fld_81fd3815dbda45deb4ba5c49db16e7ee
-modified: 1634406755011
+modified: 1634407297149
 created: 1631634492016
 url: "{{ _.base_url }}/students"
 name: Student 2
@@ -11,11 +11,11 @@ body:
   mimeType: application/json
   text: |-
     {
-    					"class_id": 2,
-    				 "first_name": "Joseh --",
-             "last_name": "souza",
-             "birthday": "2021-09-22",
-             "password": "bdsadasldlq"
+    	"class_id": 2,
+    	"first_name": "Joseh --",
+    	"last_name": "souza",
+    	"birthday": "2021-09-22",
+    	"password": "bdsadasldlq"
     }
 parameters: []
 headers:

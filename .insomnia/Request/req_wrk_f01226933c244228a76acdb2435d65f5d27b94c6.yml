@@ -1,31 +1,25 @@
 _id: req_wrk_f01226933c244228a76acdb2435d65f5d27b94c6
 type: Request
 parentId: fld_wrk_f01226933c244228a76acdb2435d65f5c5a2dc3d
-modified: 1634406105711
-created: 1634406105711
+modified: 1634407574472
+created: 1634407574472
 url: "{{ base_url }}/admin/login"
-name: adds an inventory item
+name: admin login
 description: ""
 method: POST
 body:
   mimeType: application/json
   text: |-
     {
-      "id": "d290f1ee-6c54-4b01-90e6-d701748f0851",
-      "name": "Widget Adapter",
-      "releaseDate": "2016-08-29T09:12:33.001Z",
-      "manufacturer": {
-        "name": "ACME Corporation",
-        "homePage": "https://www.acme-corp.com",
-        "phone": "408-867-5309"
-      }
+      "username": "admin",
+      "password": "admin"
     }
 parameters: []
 headers:
   - name: Content-Type
     value: application/json
 authentication: {}
-metaSortKey: -1634406105711
+metaSortKey: -1634407574472
 isPrivate: false
 settingStoreCookies: true
 settingSendCookies: true
