@@ -22,10 +22,12 @@ class Message extends Model {
     this.belongsTo(models.Admin, {
       foreignKey: "admin_id",
       target: "id",
+      as: "author"
     });
     this.belongsToMany(models.Class, {
       foreignKey: "message_id",
       through: "message_class",
+      as: "classes"
     });
   }
 }

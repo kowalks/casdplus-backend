@@ -21,14 +21,17 @@ class Class extends Model {
     this.belongsToMany(models.Message, {
       foreignKey: "class_id",
       through: "message_class",
+      as: "messages"
     });
     this.belongsToMany(models.Student, {
       foreignKey: "class_id",
       through: "student_class",
+      as: 'students'
     });
     this.belongsToMany(models.Student, {
       foreignKey: "class_id",
       through: "class_exam",
+      as: "exams"
     });
   }
 }

@@ -20,6 +20,7 @@ class Exam extends Model {
     this.belongsToMany(models.Student, {
       foreignKey: "exam_id",
       through: "class_exam",
+      as: "classes"
     });
   }
 }

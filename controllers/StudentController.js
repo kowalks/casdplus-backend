@@ -1,6 +1,7 @@
 const Student = require("../models/Student");
 const Class = require("../models/Class");
 const StudentToken = require("../models/StudentToken");
+const Message = require("../models/Message");
 
 module.exports = {
   async index(req, res) {
@@ -67,9 +68,39 @@ module.exports = {
 
     if (id) {
       const student = await Student.findOne({ where: { id } });
-      res = res.json(student)
+      res = res.json(student);
     }
 
+    return res;
+  },
+
+  async messages(req, res) {
+    [res, id] = await Student.validate(req, res);
+
+    if (id) {
+      console.log("hello");
+      const student = await Student.findByPk(id, {
+        include: {
+          association: "classes",
+        },
+      });
+
+      const class_ = await Class.findByPk(student.classes[0].id, {
+        include: {
+          association: "messages",
+          attributes: {exclude:["id","admin_id","updatedAt"]},
+          through: {
+            attributes: [],
+          },
+          include: {
+            association: "author",
+            attributes: ["first_name", "last_name"],
+          },
+        },
+        order: [["messages", "created_at", "DESC"]],
+      });
+      res = res.json(class_.messages);
+    }
     return res;
   },
 };

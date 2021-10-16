@@ -19,6 +19,8 @@ routes.post('/admin/admins', AdminController.store);
 
 routes.get('/student/', StudentController.info)
 
+routes.get('/student/messages', StudentController.messages)
+
 routes.post('/student/login', StudentController.login);
 
 routes.post('/classes', ClassController.store);
