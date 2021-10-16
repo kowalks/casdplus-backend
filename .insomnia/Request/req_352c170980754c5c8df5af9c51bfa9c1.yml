@@ -1,9 +1,9 @@
 _id: req_352c170980754c5c8df5af9c51bfa9c1
 type: Request
 parentId: fld_6be90c85bf7d4ce8b4d50184c53cbecd
-modified: 1631675767219
+modified: 1634406769706
 created: 1631675762596
-url: localhost:3333/333/messages
+url: "{{ _.base_url }}/333/messages"
 name: message withou class
 description: ""
 method: POST

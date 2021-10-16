@@ -1,9 +1,9 @@
 _id: req_1fd4dd23b7ea42e595ccbcb991bdc9b1
 type: Request
 parentId: fld_1a07f3ad201d499d9b5bb03a18a3a6d3
-modified: 1631634049104
+modified: 1634406777014
 created: 1631634041897
-url: localhost:3333/classes
+url: "{{ _.base_url }}/classes"
 name: Classe2
 description: ""
 method: POST

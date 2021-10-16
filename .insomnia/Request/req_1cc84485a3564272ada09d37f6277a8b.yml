@@ -1,9 +1,9 @@
 _id: req_1cc84485a3564272ada09d37f6277a8b
 type: Request
 parentId: fld_6be90c85bf7d4ce8b4d50184c53cbecd
-modified: 1631676887438
+modified: 1634406766786
 created: 1631675432188
-url: localhost:3333/1/messages
+url: "{{ _.base_url }}/1/messages"
 name: First Message
 description: ""
 method: POST

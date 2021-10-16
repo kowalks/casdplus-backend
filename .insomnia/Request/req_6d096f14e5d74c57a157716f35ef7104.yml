@@ -1,9 +1,9 @@
 _id: req_6d096f14e5d74c57a157716f35ef7104
 type: Request
 parentId: fld_81fd3815dbda45deb4ba5c49db16e7ee
-modified: 1631677132265
+modified: 1634406755011
 created: 1631634492016
-url: localhost:3333/students
+url: "{{ _.base_url }}/students"
 name: Student 2
 description: ""
 method: POST
