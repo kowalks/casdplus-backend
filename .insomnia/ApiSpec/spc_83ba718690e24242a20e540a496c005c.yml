@@ -1,8 +1,58 @@
 _id: spc_83ba718690e24242a20e540a496c005c
 type: ApiSpec
 parentId: wrk_f01226933c244228a76acdb2435d65f5
-modified: 1630695273815
+modified: 1634407200155
 created: 1630695119406
 fileName: casdplus.yaml
-contents: ""
+contents: |-
+  openapi: 3.0.0
+  servers:
+    # Added by API Auto Mocking Plugin
+    - description: SwaggerHub API Auto Mocking
+      url: https://casdplus.herokuapp.com/
+  info:
+    description: CASDplus API documentation
+    version: "0.0.1"
+    title: CASDplus API
+    license:
+      name: MIT
+      url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+  tags:
+    - name: admins
+      description: Secured Admin-only calls
+  paths:
+    /admin/login:
+      post:
+        tags:
+          - admins
+        operationId: addInventory
+        description: Adds an item to the system
+        responses:
+          '201':
+            description: item created
+          '400':
+            description: if request doesn't contain specified parameters
+          '406':
+            description: if username or password is incorrect.
+        requestBody:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginForm'
+          description: Inventory item to add
+        summary: admin login
+  components:
+    schemas:
+      LoginForm:
+        type: object
+        required:
+          - username
+          - password
+        properties:
+          username:
+            type: string
+            example: admin
+          password:
+            type: string
+            example: admin
 contentType: yaml

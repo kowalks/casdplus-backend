@@ -1,0 +1,23 @@
+_id: req_5be1519e8afe435bb2136ff095e2307c
+type: Request
+parentId: fld_d15418fffacc44799cc93ee808b6d936
+modified: 1634241157147
+created: 1634144600446
+url: https://casdplus.herokuapp.com/student/
+name: Student info
+description: ""
+method: GET
+body: {}
+parameters: []
+headers: []
+authentication:
+  type: bearer
+  token: X6kz7nGzPXEuU0c
+metaSortKey: -1633821816430
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

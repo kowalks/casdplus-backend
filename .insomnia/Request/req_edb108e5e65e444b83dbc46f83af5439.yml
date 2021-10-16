@@ -1,0 +1,32 @@
+_id: req_edb108e5e65e444b83dbc46f83af5439
+type: Request
+parentId: fld_d15418fffacc44799cc93ee808b6d936
+modified: 1634404592419
+created: 1634402750483
+url: https://casdplus.herokuapp.com/admin/
+name: Admin Info
+description: ""
+method: GET
+body:
+  mimeType: application/json
+  text: |-
+    {
+    	"username": "admin123",
+    	"password": "admin"
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_4446fdf804374a7bbf5e60ab16310c7a
+authentication:
+  type: bearer
+  token: q8zJA9lpcs73rc5
+metaSortKey: -1632748624296.5
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global
