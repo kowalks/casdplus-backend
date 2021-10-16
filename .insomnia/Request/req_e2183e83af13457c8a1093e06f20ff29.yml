@@ -1,0 +1,30 @@
+_id: req_e2183e83af13457c8a1093e06f20ff29
+type: Request
+parentId: fld_1a07f3ad201d499d9b5bb03a18a3a6d3
+modified: 1631634025202
+created: 1631633945198
+url: localhost:3333/classes
+name: Classe1
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: |-
+    {
+    	"name": "class teste  1", 
+     "schedule": "seg - hello3\n ter- hadsad" 
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_f1f3d0f37c4b4d378572d509dd0bce3a
+authentication: {}
+metaSortKey: -1631633945198
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

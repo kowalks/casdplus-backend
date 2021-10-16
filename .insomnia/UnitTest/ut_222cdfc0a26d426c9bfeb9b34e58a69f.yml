@@ -1,0 +1,10 @@
+_id: ut_222cdfc0a26d426c9bfeb9b34e58a69f
+type: UnitTest
+parentId: uts_d06364af9e1d45bc8203fb7b7c3044fb
+modified: 1631634104652
+created: 1631633897863
+requestId: req_e2183e83af13457c8a1093e06f20ff29
+name: Criando classes 1
+code: |-
+  const response1 = await insomnia.send();
+  expect(response1.status).to.equal(200);
