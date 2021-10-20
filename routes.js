@@ -21,6 +21,8 @@ routes.get('/admin/', AdminController.info)
 
 routes.post('/admin/', AdminController.store);
 
+routes.post('/admin/:class_id/messages', MessageController.store);
+
 
 // Student routes
 
@@ -31,8 +33,6 @@ routes.get('/student/messages', StudentController.messages)
 routes.post('/student/login', StudentController.login);
 
 routes.post('/classes', ClassController.store);
-
-routes.post('/:class_id/messages', MessageController.store);
 
 // Hello World
 routes.get('/', function (req, res) {
