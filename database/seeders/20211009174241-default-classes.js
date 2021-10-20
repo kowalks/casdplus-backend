@@ -13,6 +13,12 @@ module.exports = {
       schedule: 'http://www.instagram.com/casdsjc',
       created_at: new Date(),
       updated_at: new Date()
+    },
+    {
+      name: 'CASDblank',
+      schedule: '',
+      created_at: new Date(),
+      updated_at: new Date()
     }]);
   },
 

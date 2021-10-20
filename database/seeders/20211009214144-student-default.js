@@ -23,6 +23,16 @@ module.exports = {
         created_at: new Date(),
         updated_at: new Date(),
       },
+      {
+        first_name: "Blank",
+        last_name: "User",
+        birthday: "10-10-2024",
+        username: "blank",
+        email: "blank@gmail.com",
+        password: "blank",
+        created_at: new Date(),
+        updated_at: new Date(),
+      }
     ]);
   },
 
