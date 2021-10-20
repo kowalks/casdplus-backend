@@ -4,13 +4,15 @@ const csv = require("fast-csv");
 
 module.exports = {
   async store(req, res) {
-    const { first_name, last_name, password } = req.body;
+    [res, id] = await Admin.validate(req, res);
 
-    console.log({ first_name, last_name, password });
+    if (id) {
+      const { first_name, last_name, password, username } = req.body;
+      const admin = await Admin.create({ first_name, last_name, password, username });
+      res = res.json(admin);
+    }
 
-    const admin = await Admin.create({ first_name, last_name, password });
-
-    return res.json(admin);
+    return res;
   },
 
   async login(req, res) {
