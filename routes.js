@@ -1,12 +1,19 @@
 const express = require('express');
+
 const StudentController = require('./controllers/StudentController')
 const ClassController = require('./controllers/ClassController')
 const MessageController = require('./controllers/MessageController');
 const AdminController = require('./controllers/AdminController');
+
+const multer = require('multer');
+const upload = multer({ dest: 'tmp/' })
+
 const routes = express.Router();
 
 // Admin routes
 routes.post('/admin/students', StudentController.store);
+
+routes.post('/admin/students_bulk', upload.single('avatar'), StudentController.bulk_store)
 
 routes.post('/admin/login', AdminController.login);
 
