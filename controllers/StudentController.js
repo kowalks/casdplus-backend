@@ -2,6 +2,7 @@ const Student = require("../models/Student");
 const Class = require("../models/Class");
 const StudentToken = require("../models/StudentToken");
 const Message = require("../models/Message");
+const Event = require('../models/Event');
 
 const csv = require("fast-csv");
 
@@ -69,7 +70,17 @@ module.exports = {
     [res, id] = await Student.validate(req, res);
 
     if (id) {
-      const student = await Student.findOne({ where: { id } });
+      const student = await Student.findByPk(id, {
+        attributes: { exclude: ["password"] },
+        include: {
+          association: "classes",
+          attributes: ["name", "sala"],
+          through: {
+            attributes: [],
+          },
+        },
+      });
+
       res = res.json(student);
     }
 
@@ -150,5 +161,24 @@ module.exports = {
       });
     // TODO: print success and errors
     return res.status(200).json({ success: success, errors: errors });
+  },
+
+  async events(req, res) {
+    [res, id] = await Student.validate(req, res);
+
+    if(!id) return res;
+
+      const student = await Student.findByPk(id, {
+        include: {
+          association: "classes",
+        },
+      });
+
+      const class_ = await Class.findByPk(student.classes[0].id)
+
+      const events = await Event.findAll({where: {class_id: class_.id}})
+
+      return res.json(events)
+
   },
 };

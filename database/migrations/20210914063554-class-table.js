@@ -14,6 +14,10 @@ module.exports = {
         type: DataTypes.STRING,
         allowNull: false
      }, 
+     sala: {
+      type: DataTypes.STRING,
+      allowNull: true
+   },
      schedule: {
         type: DataTypes.STRING
      }
