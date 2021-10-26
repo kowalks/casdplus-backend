@@ -4,6 +4,7 @@ const StudentController = require('./controllers/StudentController')
 const ClassController = require('./controllers/ClassController')
 const MessageController = require('./controllers/MessageController');
 const AdminController = require('./controllers/AdminController');
+const EventController = require('./controllers/EventController');
 
 const multer = require('multer');
 const upload = multer({ dest: 'tmp/' })
@@ -30,9 +31,15 @@ routes.get('/student/', StudentController.info)
 
 routes.get('/student/messages', StudentController.messages)
 
+routes.get('/student/events', StudentController.events)
+
 routes.post('/student/login', StudentController.login);
 
 routes.post('/classes', ClassController.store);
+
+routes.post('/:class_id/messages', MessageController.store);
+
+routes.post('/:class_id/events', EventController.store);
 
 // Hello World
 routes.get('/', function (req, res) {
