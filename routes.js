@@ -12,18 +12,21 @@ const upload = multer({ dest: 'tmp/' })
 const routes = express.Router();
 
 // Admin routes
+routes.get('/admin/', AdminController.info)
+
 routes.post('/admin/students', StudentController.store);
 
 routes.post('/admin/students_bulk', upload.single('avatar'), StudentController.bulk_store)
 
 routes.post('/admin/login', AdminController.login);
 
-routes.get('/admin/', AdminController.info)
-
 routes.post('/admin/', AdminController.store);
 
-routes.post('/admin/:class_id/messages', MessageController.store);
+routes.post('/admin/classes/:class_id/messages', MessageController.store);
 
+routes.post('/admin/classes/:class_id/events', EventController.store);
+
+routes.post('/admin/classes', ClassController.store);
 
 // Student routes
 
@@ -34,12 +37,6 @@ routes.get('/student/messages', StudentController.messages)
 routes.get('/student/events', StudentController.events)
 
 routes.post('/student/login', StudentController.login);
-
-routes.post('/classes', ClassController.store);
-
-routes.post('/:class_id/messages', MessageController.store);
-
-routes.post('/:class_id/events', EventController.store);
 
 // Hello World
 routes.get('/', function (req, res) {
