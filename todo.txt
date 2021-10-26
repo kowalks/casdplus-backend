@@ -1,34 +1,34 @@
 
 	TODO
-	- CASDvest ou CASDinho no GET /student/
-    - Tirar classes de GET /student/
-    - GET /student/classes/
-    - Passar token admin na MessageController.store
-    - Passar token admin em StudentController.store
-    - Passar token admin em StudentController.bulk_store
-    - Passar token admin em ClassController.store
-    - DELETE /student/login
-    - GET /student/faltas
-    - GET /admin/classes
+	K- CASDvest ou CASDinho no GET /student/
+    K- Tirar classes de GET /student/
+    K- GET /student/classes/
+    K- Passar token admin na MessageController.store
+    K- Passar token admin em StudentController.store
+    K- Passar token admin em StudentController.bulk_store
+    K- Passar token admin em ClassController.store
+    K- DELETE /student/login
+    K- GET /student/faltas
+    K- GET /admin/classes
 
     # Tipo de Messages
-    - criar tabela de categorias
-    - alimentar com as seeds que a gente escolheu
-    - fazer o GET /admin/categorias
-    - adicionar chave estrangeira na tabela message
-    - mudar os seeds
-    - mudar o POST /admin/classes/:class_id/message
-    - conferir se ta vindo no GET
+    Y- criar tabela de categorias
+    Y- alimentar com as seeds que a gente escolheu (criar as categorias)
+    Y- fazer o GET /admin/categorias
+    Y- adicionar chave estrangeira na tabela message
+    Y- mudar os seeds (adcionar as categorias nas mensagens existentes)
+    Y- mudar o POST /admin/classes/:class_id/message
+    Y- conferir se ta vindo no GET
 
     # Filtro de Mensagens
-    - GET /student/messages?tipo=:tipo
-    - GET /student/messages?start_date=:start_date&end_date=:end_date
+    K- GET /student/messages?tipo=:tipo
+    K- GET /student/messages?start_date=:start_date&end_date=:end_date
 
     # Pin
-    - adicionar atributo na tabela message
-    - mudar os seeds com o atributo novo
-    - GET /admin/messages
-    - PATCH /admin/messages/:message_id
+    Y- adicionar atributo na tabela message
+    Y- mudar os seeds com o atributo novo
+    Y- GET /admin/messages
+    Y- PATCH /admin/messages/:message_id
 
 
     NÃO IMPORTANTE
