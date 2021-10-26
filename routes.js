@@ -22,6 +22,8 @@ routes.get('/admin/', AdminController.info)
 
 routes.post('/admin/', AdminController.store);
 
+routes.post('/admin/:class_id/messages', MessageController.store);
+
 
 // Student routes
 
