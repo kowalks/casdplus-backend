@@ -85,7 +85,7 @@ Returns
   POST /student/login
 ```
 
-Login info shoud be sent in JSON format on request body. 
+Login info should be sent in JSON format on request body. 
 
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
@@ -110,6 +110,43 @@ Auth info should be sent on the request header in the form of a Bearer Authentic
 Returns 
 - `401: Unauthorized` if request doesn't contain a valid auth token.
 - JSON containing `id`, `fist_name`, `last_name`, `email`, `username`, `birthday`, `password`, `createdAt` and `updatedAt`.
+
+### Messages
+```http
+  POST /:class_id/messages
+```
+Message info should be sent in JSON format on request body.
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `title`   | `string` | **Required**.Title for your message |
+| `body`    | `string` | **Required**. Info about the message | 
+| `admin_id`| `integer`| **Required**. Author id | 
+
+```http
+  GET /student/messages
+```
+Messages' info that have been sent to the user should be return, once the user makes a request that contains his token in the form of a Bearer Authentication `Authorization: Bearer <token>`
+
+
+### Events
+```http
+  POST /:class_id/events
+```
+Events info should be sent in JSON format on request body with a token for admin validation.
+
+| Parameter    | Type     | Description                |
+| :--------    | :------- | :------------------------- |
+| `name`       | `string` | **Required**. Event's name | 
+| `description`| `string` | **Required**. Info about the event | 
+| `date`       | `integer`| **Required**. When the event will happen | 
+
+
+```http
+  GET /student/events
+```
+Events' info that have been sent to the user should be return, once the user makes a request that contains his token in the form of a Bearer Authentication `Authorization: Bearer <token>`
+
 
 ## File Tree
 
