@@ -1,10 +1,10 @@
-_id: req_1cc84485a3564272ada09d37f6277a8b
+_id: req_7858f601339a437080537ae21555e540
 type: Request
-parentId: fld_6be90c85bf7d4ce8b4d50184c53cbecd
-modified: 1634406766786
-created: 1631675432188
-url: "{{ _.base_url }}/1/messages"
-name: First Message
+parentId: fld_6776525d1b794745addf5256c426b475
+modified: 1635303215189
+created: 1635300208382
+url: "{{ _.base_url }}/admin/classes/3/messages"
+name: Message
 description: ""
 method: POST
 body:
@@ -12,16 +12,18 @@ body:
   text: |-
     {
     	"title": "Title", 
-    	"body": "Body", 
+    	"body": "Body",
     	"admin_id": 1
     }
 parameters: []
 headers:
   - name: Content-Type
     value: application/json
-    id: pair_ae00e1a89f0148d8a60b6bdeead986f4
-authentication: {}
-metaSortKey: -1631675432188
+    id: pair_3a0b263b17204036ab46110535330ae9
+authentication:
+  type: bearer
+  token: I3k7HWgxaDK4sc5
+metaSortKey: -1631672050018
 isPrivate: false
 settingStoreCookies: true
 settingSendCookies: true

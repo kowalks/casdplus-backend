@@ -1,19 +1,19 @@
-_id: req_f4800997c5414a82b6fd68909b0d44e4
+_id: req_05c7c1727a0f4a88b5c832ba69c7879c
 type: Request
-parentId: fld_6776525d1b794745addf5256c426b475
-modified: 1635302955789
-created: 1634242634404
-url: "{{ _.base_url }}/admin/"
-name: Info
+parentId: fld_81fd3815dbda45deb4ba5c49db16e7ee
+modified: 1635302874674
+created: 1635301995925
+url: "{{ _.base_url }}/student/logout"
+name: Logout
 description: ""
-method: GET
+method: DELETE
 body: {}
 parameters: []
 headers: []
 authentication:
   type: bearer
-  token: SwPywtcGjjhRzwz
-metaSortKey: -1631672050193
+  token: SHXRUKwjYghr0ve
+metaSortKey: -1630850497990
 isPrivate: false
 settingStoreCookies: true
 settingSendCookies: true

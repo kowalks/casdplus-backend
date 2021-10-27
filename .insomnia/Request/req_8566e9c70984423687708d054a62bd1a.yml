@@ -1,19 +1,19 @@
-_id: req_f4800997c5414a82b6fd68909b0d44e4
+_id: req_8566e9c70984423687708d054a62bd1a
 type: Request
 parentId: fld_6776525d1b794745addf5256c426b475
-modified: 1635302955789
-created: 1634242634404
-url: "{{ _.base_url }}/admin/"
-name: Info
+modified: 1635303233106
+created: 1635301853470
+url: "{{ _.base_url }}/admin/classes"
+name: Class
 description: ""
-method: GET
+method: POST
 body: {}
 parameters: []
 headers: []
 authentication:
   type: bearer
-  token: SwPywtcGjjhRzwz
-metaSortKey: -1631672050193
+  token: 3UrE4umpHqkW2jh
+metaSortKey: -1631672050030.5
 isPrivate: false
 settingStoreCookies: true
 settingSendCookies: true

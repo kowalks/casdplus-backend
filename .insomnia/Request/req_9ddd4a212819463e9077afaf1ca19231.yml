@@ -1,0 +1,35 @@
+_id: req_9ddd4a212819463e9077afaf1ca19231
+type: Request
+parentId: fld_6776525d1b794745addf5256c426b475
+modified: 1635301366618
+created: 1635301204604
+url: "{{ _.base_url }}/admin/students_bulk"
+name: Student Bulk
+description: ""
+method: POST
+body:
+  mimeType: multipart/form-data
+  params:
+    - id: pair_0386b9fde47141769b44a3b660fbf248
+      name: file
+      value: ""
+      description: ""
+      type: file
+      multiline: null
+      fileName: /home/kowalks/Desktop/arquivo.csv
+parameters: []
+headers:
+  - name: Content-Type
+    value: multipart/form-data
+    id: pair_c116e4287102484194e1027500dd0a06
+authentication:
+  type: bearer
+  token: 3UrE4umpHqkW2jh
+metaSortKey: -1631672050043
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global
