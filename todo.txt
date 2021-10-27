@@ -1,15 +1,15 @@
 
 	TODO
-	K- CASDvest ou CASDinho no GET /student/
-    K- Tirar classes de GET /student/
-    K- GET /student/classes/
-    K- Passar token admin na MessageController.store
-    K- Passar token admin em StudentController.store
-    K- Passar token admin em StudentController.bulk_store
-    K- Passar token admin em ClassController.store
-    K- DELETE /student/login
+	K+ CASDvest ou CASDinho no GET /student/
+    K+ Tirar classes de GET /student/
+    K+ GET /student/classes/
+    K+ Passar token admin na MessageController.store
+    K+ Passar token admin em StudentController.store
+    K+ Passar token admin em StudentController.bulk_store
+    K+ Passar token admin em ClassController.store
+    K+ DELETE /student/login
     K- GET /student/faltas
-    K- GET /admin/classes
+    K+ GET /admin/classes
 
     # Tipo de Messages
     Y- criar tabela de categorias
@@ -33,3 +33,5 @@
 
     NÃO IMPORTANTE
 	- Mensagem de erro no bulk_store do student
+    - Validar melhor o email colocado no POST /admin/students_bulk
+    - validar melhor o email colocado no POST /admin

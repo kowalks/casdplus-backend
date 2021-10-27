@@ -2,7 +2,8 @@ const Student = require("../models/Student");
 const Class = require("../models/Class");
 const StudentToken = require("../models/StudentToken");
 const Message = require("../models/Message");
-const Event = require('../models/Event');
+const Event = require("../models/Event");
+const Admin = require("../models/Admin");
 
 const csv = require("fast-csv");
 
@@ -31,7 +32,22 @@ module.exports = {
     }
   },
 
+  async logout(req, res) {
+    [res, id] = await Student.validate(req, res);
+
+    if (!id) return res;
+
+    const token = req.headers.authorization.substring(7);
+
+    StudentToken.destroy({ where: { token } });
+
+    return res.status(200).send('OK');
+  },
+
   async store(req, res) {
+    [res, id] = await Admin.validate(req, res);
+    if (!id) return res;
+
     const {
       class_id,
       first_name,
@@ -42,11 +58,13 @@ module.exports = {
       username,
     } = req.body;
 
-    console.log("class_id: ", class_id);
+    if (!first_name || !last_name || !birthday || !class_id || !password || !email || !username)
+      return res.status(406).send("Please provide full information.")
+
     const class_ = await Class.findByPk(class_id);
 
     if (!class_) {
-      return res.status(406).json({ error: "Class not found" });
+      return res.status(406).send("Class not found");
     }
 
     const student_found = await Student.findOne({ where: { email: email } });
@@ -63,7 +81,7 @@ module.exports = {
       return res.json(student);
     }
 
-    return res.status(406).json({ error: "email already existis" });
+    return res.status(406).send("email already existis");
   },
 
   async info(req, res) {
@@ -71,17 +89,30 @@ module.exports = {
 
     if (id) {
       const student = await Student.findByPk(id, {
-        attributes: { exclude: ["password"] },
+        attributes: ["first_name", "last_name"],
         include: {
           association: "classes",
-          attributes: ["name", "sala"],
+          attributes: ["name", "id"],
           through: {
             attributes: [],
           },
         },
       });
 
-      res = res.json(student);
+      is_casdinho = false;
+
+      for (var i = 0; i < student.classes.length; i++) {
+        if (student.classes[i].name === "CASDinho") {
+          is_casdinho = true;
+          break;
+        }
+      }
+
+      res = res.json({
+        first_name: student.first_name,
+        last_name: student.last_name,
+        is_casdinho: is_casdinho,
+      });
     }
 
     return res;
@@ -118,6 +149,9 @@ module.exports = {
   },
 
   async bulk_store(req, res) {
+    [res, id] = await Admin.validate(req, res);
+    if (!id) return res;
+
     const fileRows = [];
     // const fileObjects = [];
     var errors = [];
@@ -152,6 +186,7 @@ module.exports = {
             await class_.addStudent(student);
             success++;
           } catch (err) {
+            console.log(err)
             errors.push(k);
           }
         }
@@ -166,19 +201,45 @@ module.exports = {
   async events(req, res) {
     [res, id] = await Student.validate(req, res);
 
-    if(!id) return res;
+    if (!id) return res;
 
-      const student = await Student.findByPk(id, {
-        include: {
-          association: "classes",
-        },
-      });
+    const student = await Student.findByPk(id, {
+      include: {
+        association: "classes",
+      },
+    });
 
-      const class_ = await Class.findByPk(student.classes[0].id)
+    const class_ = await Class.findByPk(student.classes[0].id);
 
-      const events = await Event.findAll({where: {class_id: class_.id}})
+    const events = await Event.findAll({ where: { class_id: class_.id } });
 
-      return res.json(events)
-
+    return res.json(events);
   },
+
+  async classes(req, res) {
+    [res, id] = await Student.validate(req, res);
+
+    if (!id) return res;
+
+    const student = await Student.findByPk(id, {
+      attributes: [],
+      include: {
+        association: "classes",
+        attributes: ["id", "name", "schedule"],
+        through: {
+          attributes: [],
+        },
+      },
+    });
+
+    return res.json(student.classes)
+  },
+
+  async students(req, res) {
+    [res, id] = await Admin.validate(req, res);
+    if (!id) return res;
+
+    const students = await Student.findAll();
+    return res.status(200).json(students)
+  }
 };

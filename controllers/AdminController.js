@@ -6,13 +6,15 @@ module.exports = {
   async store(req, res) {
     [res, id] = await Admin.validate(req, res);
 
-    if (id) {
-      const { first_name, last_name, password, username } = req.body;
-      const admin = await Admin.create({ first_name, last_name, password, username });
-      res = res.json(admin);
-    }
+    if (!id) return res;
 
-    return res;
+    const { first_name, last_name, password, username } = req.body;
+
+    if (!first_name || !last_name || !password || !username)
+      return res.status(406).send('Please provide full information.')
+
+    const admin = await Admin.create({ first_name, last_name, password, username });
+    return  res.json(admin);
   },
 
   async login(req, res) {
@@ -30,6 +32,18 @@ module.exports = {
     } catch (err) {
       return res.status(406).json({ error: "Invalid username or password" });
     }
+  },
+
+  async logout(req, res) {
+    [res, id] = await Admin.validate(req, res);
+
+    if (!id) return res;
+
+    const token = req.headers.authorization.substring(7);
+
+    AdminToken.destroy({ where: { token } });
+
+    return res.status(200).send('OK');
   },
 
   async info(req, res) {
