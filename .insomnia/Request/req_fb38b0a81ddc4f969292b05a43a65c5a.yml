@@ -1,10 +1,10 @@
-_id: req_f4800997c5414a82b6fd68909b0d44e4
+_id: req_fb38b0a81ddc4f969292b05a43a65c5a
 type: Request
-parentId: fld_6776525d1b794745addf5256c426b475
-modified: 1635302955789
-created: 1634242634404
-url: "{{ _.base_url }}/admin/"
-name: Info
+parentId: fld_81fd3815dbda45deb4ba5c49db16e7ee
+modified: 1635292742450
+created: 1635292719181
+url: "{{ _.base_url }}/student/classes"
+name: Classes
 description: ""
 method: GET
 body: {}
@@ -12,8 +12,8 @@ parameters: []
 headers: []
 authentication:
   type: bearer
-  token: SwPywtcGjjhRzwz
-metaSortKey: -1631672050193
+  token: xxVnWvjvNZlK2ph
+metaSortKey: -1630850498149.375
 isPrivate: false
 settingStoreCookies: true
 settingSendCookies: true

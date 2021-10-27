@@ -1,0 +1,33 @@
+_id: req_e3f3073daaf14091b8835af57295146e
+type: Request
+parentId: fld_6776525d1b794745addf5256c426b475
+modified: 1635303415513
+created: 1635303253724
+url: "{{ _.base_url }}/admin/classes/3/events"
+name: Event
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: |-
+    {
+    	"name": "aaa",
+    	"description": "description",
+    	"date": "2020-01-01"
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_3a0b263b17204036ab46110535330ae9
+authentication:
+  type: bearer
+  token: I3k7HWgxaDK4sc5
+metaSortKey: -1631672049980.5
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global
