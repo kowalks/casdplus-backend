@@ -34,6 +34,14 @@ routes.get("/admin/classes", ClassController.classes);
 
 routes.delete("/admin/logout", AdminController.logout);
 
+routes.get("/admin/categorias", AdminController.labels);
+
+routes.get("/admin/messages", AdminController.messages);
+
+routes.patch("/admin/messages/:message_id", AdminController.pin);
+
+
+
 // Student routes
 
 routes.get("/student/", StudentController.info);

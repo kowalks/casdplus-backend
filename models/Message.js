@@ -6,7 +6,9 @@ class Message extends Model {
       {
         title: DataTypes.STRING,
         body: DataTypes.STRING,
-        // admin_id: DataTypes.INTEGER
+        admin_id: DataTypes.INTEGER,
+        label_id: DataTypes.INTEGER,
+        pin: DataTypes.BOOLEAN
       },
       {
         sequelize: connection,

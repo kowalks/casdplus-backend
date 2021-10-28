@@ -2,19 +2,16 @@
 
 module.exports = {
   up: async (queryInterface, DataTypes) => {
-    await queryInterface.createTable("classes", {
+    await queryInterface.createTable("labels", {
       id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         allowNull: false,
         autoIncrement: true,
       },
-      name: {
+      label: {
         type: DataTypes.STRING,
         allowNull: false,
-      },
-      schedule: {
-        type: DataTypes.STRING,
       },
       created_at: {
         type: DataTypes.DATE,
@@ -29,6 +26,6 @@ module.exports = {
   },
 
   down: async (queryInterface, DataTypes) => {
-    await queryInterface.dropTable("classes");
+    await queryInterface.dropTable("labels");
   },
 };

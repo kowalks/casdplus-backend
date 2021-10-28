@@ -9,13 +9,14 @@ module.exports = {
     if (!id) return res;
 
     var { class_id } = req.params;
-    var { title, body } = req.body;
+    var { title, body, label_id } = req.body;
+
 
     if (!title || !body)
       return res
         .status(406)
         .json({ error: "Incomplete message. Please provide title and body." });
-
+    
     // maybe we should be able to pass admin_id in request.
     admin_id = id;
 
@@ -25,7 +26,7 @@ module.exports = {
       return res.status(406).json({ error: "Class not found" });
     }
 
-    const message = await Message.create({ admin_id, title, body });
+    const message = await Message.create({ admin_id, title, body, label_id });
 
     await class_.addMessage(message);
 

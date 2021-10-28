@@ -10,6 +10,7 @@ const Message = require("../models/Message");
 const Admin = require("../models/Admin");
 const AdminToken = require("../models/AdminToken");
 const StudentToken = require("../models/StudentToken");
+const Label = require("../models/Label");
 
 const config = require("../config/config.json");
 
@@ -57,6 +58,7 @@ Message.init(connection);
 Admin.init(connection);
 AdminToken.init(connection);
 StudentToken.init(connection);
+Label.init(connection);
 
 Student.associate(connection.models);
 Event.associate(connection.models);
