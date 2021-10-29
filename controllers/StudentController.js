@@ -4,6 +4,7 @@ const StudentToken = require("../models/StudentToken");
 const Message = require("../models/Message");
 const Event = require("../models/Event");
 const Admin = require("../models/Admin");
+const { Op } = require("sequelize");
 
 const csv = require("fast-csv");
 
@@ -41,7 +42,7 @@ module.exports = {
 
     StudentToken.destroy({ where: { token } });
 
-    return res.status(200).send('OK');
+    return res.status(200).send("OK");
   },
 
   async store(req, res) {
@@ -58,8 +59,16 @@ module.exports = {
       username,
     } = req.body;
 
-    if (!first_name || !last_name || !birthday || !class_id || !password || !email || !username)
-      return res.status(406).send("Please provide full information.")
+    if (
+      !first_name ||
+      !last_name ||
+      !birthday ||
+      !class_id ||
+      !password ||
+      !email ||
+      !username
+    )
+      return res.status(406).send("Please provide full information.");
 
     const class_ = await Class.findByPk(class_id);
 
@@ -121,31 +130,40 @@ module.exports = {
   async messages(req, res) {
     [res, id] = await Student.validate(req, res);
 
-    if (id) {
-      console.log("hello");
-      const student = await Student.findByPk(id, {
-        include: {
-          association: "classes",
-        },
-      });
+    if (!id) return res;
 
-      const class_ = await Class.findByPk(student.classes[0].id, {
-        include: {
-          association: "messages",
-          attributes: { exclude: ["id", "admin_id", "updatedAt"] },
-          through: {
-            attributes: [],
-          },
-          include: {
-            association: "author",
-            attributes: ["first_name", "last_name"],
-          },
+    const student = await Student.findByPk(id, {
+      include: {
+        association: "classes",
+      },
+    });
+
+    start_date = (req.query.start_date) ? req.query.start_date : '2000-01-01';
+    end_date = (req.query.end_date) ? req.query.end_date : '3000-01-01';
+
+    var where = {
+      created_at: { [Op.between]: [start_date, end_date] },
+    };
+
+    if (req.query.label_id) where.label_id = req.query.label_id;
+
+    const class_ = await Class.findByPk(student.classes[0].id, {
+      include: {
+        association: "messages",
+        attributes: { exclude: ["id", "admin_id", "updatedAt"] },
+        through: {
+          attributes: [],
         },
-        order: [["messages", "created_at", "DESC"]],
-      });
-      res = res.json(class_.messages);
-    }
-    return res;
+        include: {
+          association: "author",
+          attributes: ["first_name", "last_name"],
+        },
+        where: where,
+      },
+      order: [["messages", "created_at", "DESC"]],
+    });
+
+    return res.json((class_)? class_.messages : []);
   },
 
   async bulk_store(req, res) {
@@ -186,7 +204,7 @@ module.exports = {
             await class_.addStudent(student);
             success++;
           } catch (err) {
-            console.log(err)
+            console.log(err);
             errors.push(k);
           }
         }
@@ -232,7 +250,7 @@ module.exports = {
       },
     });
 
-    return res.json(student.classes)
+    return res.json(student.classes);
   },
 
   async students(req, res) {
@@ -240,6 +258,6 @@ module.exports = {
     if (!id) return res;
 
     const students = await Student.findAll();
-    return res.status(200).json(students)
-  }
+    return res.status(200).json(students);
+  },
 };
