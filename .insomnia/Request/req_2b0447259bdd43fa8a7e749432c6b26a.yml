@@ -1,19 +1,17 @@
-_id: req_f4800997c5414a82b6fd68909b0d44e4
+_id: req_2b0447259bdd43fa8a7e749432c6b26a
 type: Request
-parentId: fld_6776525d1b794745addf5256c426b475
-modified: 1635304445251
-created: 1634242634404
-url: "{{ _.base_url }}/admin/"
-name: Info
+parentId: wrk_f01226933c244228a76acdb2435d65f5
+modified: 1635470016755
+created: 1635470003361
+url: "{{ _.base_url }}/"
+name: Hello World
 description: ""
 method: GET
 body: {}
 parameters: []
 headers: []
-authentication:
-  type: bearer
-  token: 85fQhsoP9iANKhJ
-metaSortKey: -1631672050193
+authentication: {}
+metaSortKey: -1635470003361
 isPrivate: false
 settingStoreCookies: true
 settingSendCookies: true

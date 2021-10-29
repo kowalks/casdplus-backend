@@ -1,7 +1,7 @@
 _id: req_e3f3073daaf14091b8835af57295146e
 type: Request
 parentId: fld_6776525d1b794745addf5256c426b475
-modified: 1635303415513
+modified: 1635470585678
 created: 1635303253724
 url: "{{ _.base_url }}/admin/classes/3/events"
 name: Event
@@ -22,8 +22,8 @@ headers:
     id: pair_3a0b263b17204036ab46110535330ae9
 authentication:
   type: bearer
-  token: I3k7HWgxaDK4sc5
-metaSortKey: -1631672049980.5
+  token: SExrHd2sPIu0IIa
+metaSortKey: -1631672049989.875
 isPrivate: false
 settingStoreCookies: true
 settingSendCookies: true

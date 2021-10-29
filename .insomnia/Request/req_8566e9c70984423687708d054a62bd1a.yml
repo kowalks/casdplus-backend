@@ -1,7 +1,7 @@
 _id: req_8566e9c70984423687708d054a62bd1a
 type: Request
 parentId: fld_6776525d1b794745addf5256c426b475
-modified: 1635303233106
+modified: 1635304422146
 created: 1635301853470
 url: "{{ _.base_url }}/admin/classes"
 name: Class
@@ -12,7 +12,7 @@ parameters: []
 headers: []
 authentication:
   type: bearer
-  token: 3UrE4umpHqkW2jh
+  token: C1F5wfFUbgT0Dgq
 metaSortKey: -1631672050030.5
 isPrivate: false
 settingStoreCookies: true

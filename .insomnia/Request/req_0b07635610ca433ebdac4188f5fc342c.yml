@@ -1,19 +1,19 @@
-_id: req_c0e734def38345729860c22715ba71c0
+_id: req_0b07635610ca433ebdac4188f5fc342c
 type: Request
-parentId: fld_81fd3815dbda45deb4ba5c49db16e7ee
-modified: 1635304580920
-created: 1635303900289
-url: "{{ _.base_url }}/student/events"
-name: Events
+parentId: fld_6776525d1b794745addf5256c426b475
+modified: 1635469964613
+created: 1635469852023
+url: "{{ _.base_url }}/admin/messages/2/"
+name: Message
 description: ""
-method: GET
+method: PATCH
 body: {}
 parameters: []
 headers: []
 authentication:
   type: bearer
-  token: fTcno1xtfUE3RJC
-metaSortKey: -1630850498069.6875
+  token: SExrHd2sPIu0IIa
+metaSortKey: -1631672050003.9375
 isPrivate: false
 settingStoreCookies: true
 settingSendCookies: true
