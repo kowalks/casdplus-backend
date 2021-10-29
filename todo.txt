@@ -1,0 +1,5 @@
+
+	TODO
+	- Mensagem de erro no bulk_store do student
+    - Validar melhor o email colocado no POST /admin/students_bulk
+    - validar melhor o email colocado no POST /admin
