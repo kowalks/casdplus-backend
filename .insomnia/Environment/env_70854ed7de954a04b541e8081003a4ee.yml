@@ -1,14 +1,18 @@
 _id: env_70854ed7de954a04b541e8081003a4ee
 type: Environment
 parentId: env_5f4bd920f01a43ccdc771aacb214de557563a250
-modified: 1634406231184
+modified: 1635738014623
 created: 1634406208143
 name: Heroku
 data:
   base_url: https://casdplus.herokuapp.com
+  admin_token: c6Btjio39Kz8H5Q
+  student_token: c4PssGTFQGefGcJ
 dataPropertyOrder:
   "&":
     - base_url
+    - admin_token
+    - student_token
 color: "#7d69cb"
 isPrivate: false
 metaSortKey: 1634405753782
