@@ -231,7 +231,7 @@ module.exports = {
     const class_ = await Class.findByPk(student.classes[0].id, {
       include: {
         association: "messages",
-        attributes: { exclude: ["id", "admin_id", "updatedAt"] },
+        attributes: { exclude: ["admin_id", "updatedAt"] },
         through: {
           attributes: [],
         },
@@ -241,7 +241,7 @@ module.exports = {
         },
         where: where,
       },
-      order: [["messages", "created_at", "DESC"]],
+      order: [["messages", "pin", "DESC"], ["messages", "created_at", "DESC"]],
     });
 
     return res.json(class_ ? class_.messages : []);
