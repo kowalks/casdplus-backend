@@ -97,35 +97,60 @@ module.exports = {
     [res, id] = await Admin.validate(req, res);
     if (!id) return res;
 
+    let promises = [];
     var errors = [];
     var success = 0;
 
     const stream = parseFile(req.file.path, {
       headers: true,
       strictColumnHandling: true,
-      ignoreEmpty: true
+      ignoreEmpty: true,
     })
-      .validate((data) => data.first_name !== "bob")
-      .on("error", (error) => console.error(error))
-      .on("data", async function (data) {
-        const class_ = await Class.findByPk(data.class_id);
-        if (class_) {
-          const student = await Student.create(data);
-          class_.addStudent(student);
-        } else {
-          success++;
+      .transform(async (data, next) => {
+        try {
+          data.class = await Class.findByPk(data.class_id);
+        } catch (err) {
+          data.class = null;
         }
+        return next(null, data);
       })
-      .on("data-invalid", (row, rowNumber) =>
-        console.log(
-          `Invalid [rowNumber=${rowNumber}] [row=${JSON.stringify(row)}]`
+      .validate((data, next) => {
+        if (data.class == null || data.class == undefined) {
+          return next(null, false, "Class doesn't exist.");
+        }
+        if (
+          !data.first_name ||
+          !data.last_name ||
+          !data.birthday ||
+          !data.password ||
+          !data.email ||
+          !data.username
         )
-      )
-      .on("end", (rowCount) => console.log(`Parsed ${rowCount} rows`));
+          return next(null, false, "Missing information.");
+        if (new Date(data.birthday).toString() === "Invalid Date")
+          return next(null, false, "Invalid birthday date.");
+        return next(null, true);
+      })
+      .on("error", (error) => console.log("AAA"))
+      .on("data", (data) => promises.push(parseRow(data)))
+      .on("data-invalid", (row, rowNumber, reason) => {
+        console.log(`Invalid [rowNumber=${rowNumber}] [reason=${reason}]`);
+        errors.push({ row: rowNumber, reason: reason });
+      })
+      .on("end", async (rowCount) => {
+        await Promise.all(promises);
+        console.log(`Parsed ${rowCount} rows`);
+        res.json({ parsed: rowCount, success: success, errors: errors });
+      });
+
+    async function parseRow(data) {
+      const student = await Student.create(data);
+      data.class.addStudent(student);
+      success = success + 1;
+    }
 
     // console.log(stream);
-
-    return res.status(200).json({ success: success, errors: errors });
+    return res;
   },
 
   async info(req, res) {

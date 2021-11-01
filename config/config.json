@@ -11,7 +11,8 @@
       "underscored": true
     },
     "pool": null,
-    "hotst": "localhost"
+    "hotst": "localhost",
+    "logging": false
   },
 
   
