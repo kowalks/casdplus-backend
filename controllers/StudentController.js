@@ -6,7 +6,7 @@ const Event = require("../models/Event");
 const Admin = require("../models/Admin");
 const { Op } = require("sequelize");
 
-const csv = require("fast-csv");
+const { parseFile } = require("fast-csv");
 
 module.exports = {
   async index(req, res) {
@@ -93,6 +93,41 @@ module.exports = {
     return res.status(406).send("email already existis");
   },
 
+  async bulk_store(req, res) {
+    [res, id] = await Admin.validate(req, res);
+    if (!id) return res;
+
+    var errors = [];
+    var success = 0;
+
+    const stream = parseFile(req.file.path, {
+      headers: true,
+      strictColumnHandling: true,
+      ignoreEmpty: true
+    })
+      .validate((data) => data.first_name !== "bob")
+      .on("error", (error) => console.error(error))
+      .on("data", async function (data) {
+        const class_ = await Class.findByPk(data.class_id);
+        if (class_) {
+          const student = await Student.create(data);
+          class_.addStudent(student);
+        } else {
+          success++;
+        }
+      })
+      .on("data-invalid", (row, rowNumber) =>
+        console.log(
+          `Invalid [rowNumber=${rowNumber}] [row=${JSON.stringify(row)}]`
+        )
+      )
+      .on("end", (rowCount) => console.log(`Parsed ${rowCount} rows`));
+
+    // console.log(stream);
+
+    return res.status(200).json({ success: success, errors: errors });
+  },
+
   async info(req, res) {
     [res, id] = await Student.validate(req, res);
 
@@ -138,8 +173,8 @@ module.exports = {
       },
     });
 
-    start_date = (req.query.start_date) ? req.query.start_date : '2000-01-01';
-    end_date = (req.query.end_date) ? req.query.end_date : '3000-01-01';
+    start_date = req.query.start_date ? req.query.start_date : "2000-01-01";
+    end_date = req.query.end_date ? req.query.end_date : "3000-01-01";
 
     var where = {
       created_at: { [Op.between]: [start_date, end_date] },
@@ -163,57 +198,7 @@ module.exports = {
       order: [["messages", "created_at", "DESC"]],
     });
 
-    return res.json((class_)? class_.messages : []);
-  },
-
-  async bulk_store(req, res) {
-    [res, id] = await Admin.validate(req, res);
-    if (!id) return res;
-
-    const fileRows = [];
-    // const fileObjects = [];
-    var errors = [];
-    var success = 0;
-
-    csv
-      .parseFile(req.file.path)
-      .on("data", function (data) {
-        if (data.length) {
-          fileRows.push(data);
-        }
-      })
-      .on("end", async function () {
-        // console.log(fileRows);
-        // fs.unlinkSync(req.file.path);   // remove temp file
-
-        a = fileRows[0];
-        for (var k = 1; k < fileRows.length; k++) {
-          b = fileRows[k];
-          c = a.map(function (e, i) {
-            return [e, b[i]];
-          });
-          // fileObjects.push(Object.fromEntries(c));
-          obj = Object.fromEntries(c);
-
-          try {
-            const class_ = await Class.findByPk(obj.class_id);
-
-            if (!class_) throw "Erro";
-
-            const student = await Student.create(obj);
-            await class_.addStudent(student);
-            success++;
-          } catch (err) {
-            console.log(err);
-            errors.push(k);
-          }
-        }
-
-        // const resp = await Student.bulkCreate(fileObjects);
-        // console.log(resp)
-      });
-    // TODO: print success and errors
-    return res.status(200).json({ success: success, errors: errors });
+    return res.json(class_ ? class_.messages : []);
   },
 
   async events(req, res) {

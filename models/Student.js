@@ -25,7 +25,7 @@ class Student extends Model {
     this.belongsToMany(models.Class, {
       foreignKey: "student_id",
       through: "student_class",
-      as: 'classes'
+      as: "classes"
     });
     this.hasMany(models.StudentToken);
   }
