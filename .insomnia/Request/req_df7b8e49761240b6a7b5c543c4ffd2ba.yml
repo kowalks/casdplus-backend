@@ -1,28 +1,30 @@
-_id: req_8566e9c70984423687708d054a62bd1a
+_id: req_df7b8e49761240b6a7b5c543c4ffd2ba
 type: Request
-parentId: fld_8a8616e1f5d54cd2bcb43ae81c77bce2
-modified: 1635736604460
-created: 1635301853470
-url: "{{ _.base_url }}/admin/classes"
-name: Class
+parentId: fld_bcbfe8eed8e24fbab9bc3fb0a4f28ea7
+modified: 1635736927204
+created: 1635736821945
+url: "{{ _.base_url }}/admin/events"
+name: Event
 description: ""
 method: POST
 body:
   mimeType: application/json
   text: |-
     {
-    	"name": "testeteste",
-    	"schedule": "http://link.com"
+    	"name": "aaa",
+    	"description": "description",
+    	"date": "2020-01-01",
+    	"class_id": 1
     }
 parameters: []
 headers:
   - name: Content-Type
     value: application/json
-    id: pair_78860886fe1e4daf9c293d95530b8f04
+    id: pair_3a0b263b17204036ab46110535330ae9
 authentication:
   type: bearer
   token: "{{ _.admin_token }}"
-metaSortKey: -1632687923725.25
+metaSortKey: -1631672049939.875
 isPrivate: false
 settingStoreCookies: true
 settingSendCookies: true

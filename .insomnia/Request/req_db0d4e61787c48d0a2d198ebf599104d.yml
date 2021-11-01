@@ -1,7 +1,7 @@
 _id: req_db0d4e61787c48d0a2d198ebf599104d
 type: Request
-parentId: fld_6776525d1b794745addf5256c426b475
-modified: 1635301251888
+parentId: fld_3b3c2ad289604dec96be9fbd40c0c777
+modified: 1635736021240
 created: 1631634447213
 url: "{{ _.base_url }}/admin/students"
 name: Student
@@ -16,7 +16,7 @@ body:
     	"birthday": "2021-09-22",
     	"password": "bdsadasldlq",
     	"username": "ajshdjas",
-    	"email": "asjdlakjsd",
+    	"email": "asjdlakjasd",
     	"class_id": 1
     }
 parameters: []
@@ -26,7 +26,7 @@ headers:
     id: pair_96c05f6bbcb142a68c0bca803a06b647
 authentication:
   type: bearer
-  token: 3UrE4umpHqkW2jh
+  token: "{{ _.admin_token }}"
 metaSortKey: -1631672050093
 isPrivate: false
 settingStoreCookies: true

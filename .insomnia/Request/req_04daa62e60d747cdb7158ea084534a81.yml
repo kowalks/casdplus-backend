@@ -1,7 +1,7 @@
 _id: req_04daa62e60d747cdb7158ea084534a81
 type: Request
-parentId: fld_6776525d1b794745addf5256c426b475
-modified: 1635470588936
+parentId: fld_ae8ab7a721394f9281071ea556b66be0
+modified: 1635735772635
 created: 1635301984005
 url: "{{ _.base_url }}/admin/logout"
 name: Logout
@@ -13,7 +13,7 @@ headers: []
 authentication:
   type: bearer
   token: SExrHd2sPIu0IIa
-metaSortKey: -1631672049943
+metaSortKey: -1635735544472
 isPrivate: false
 settingStoreCookies: true
 settingSendCookies: true

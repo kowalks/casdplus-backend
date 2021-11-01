@@ -1,7 +1,7 @@
 _id: req_662b36e898d04badbe29629ce048ca1e
 type: Request
-parentId: fld_6776525d1b794745addf5256c426b475
-modified: 1635303180655
+parentId: fld_85cf9eaf961e4660a54ff6191c60ac7e
+modified: 1635737186217
 created: 1635303150140
 url: "{{ _.base_url }}/admin/"
 name: Admin
@@ -23,8 +23,8 @@ headers:
     id: pair_3a0b263b17204036ab46110535330ae9
 authentication:
   type: bearer
-  token: I3k7HWgxaDK4sc5
-metaSortKey: -1631672050168
+  token: "{{ _.admin_token }}"
+metaSortKey: -1634211734030.8516
 isPrivate: false
 settingStoreCookies: true
 settingSendCookies: true

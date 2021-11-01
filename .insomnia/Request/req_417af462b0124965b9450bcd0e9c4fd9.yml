@@ -1,28 +1,24 @@
-_id: req_8566e9c70984423687708d054a62bd1a
+_id: req_417af462b0124965b9450bcd0e9c4fd9
 type: Request
-parentId: fld_8a8616e1f5d54cd2bcb43ae81c77bce2
-modified: 1635736604460
-created: 1635301853470
-url: "{{ _.base_url }}/admin/classes"
-name: Class
+parentId: fld_bcbfe8eed8e24fbab9bc3fb0a4f28ea7
+modified: 1635736936076
+created: 1635736921183
+url: "{{ _.base_url }}/admin/events/8"
+name: Event
 description: ""
-method: POST
+method: DELETE
 body:
   mimeType: application/json
-  text: |-
-    {
-    	"name": "testeteste",
-    	"schedule": "http://link.com"
-    }
+  text: ""
 parameters: []
 headers:
   - name: Content-Type
     value: application/json
-    id: pair_78860886fe1e4daf9c293d95530b8f04
+    id: pair_3a0b263b17204036ab46110535330ae9
 authentication:
   type: bearer
   token: "{{ _.admin_token }}"
-metaSortKey: -1632687923725.25
+metaSortKey: -1631672049889.875
 isPrivate: false
 settingStoreCookies: true
 settingSendCookies: true

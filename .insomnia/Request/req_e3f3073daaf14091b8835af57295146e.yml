@@ -1,20 +1,15 @@
 _id: req_e3f3073daaf14091b8835af57295146e
 type: Request
-parentId: fld_6776525d1b794745addf5256c426b475
-modified: 1635470585678
+parentId: fld_bcbfe8eed8e24fbab9bc3fb0a4f28ea7
+modified: 1635736914552
 created: 1635303253724
-url: "{{ _.base_url }}/admin/classes/3/events"
+url: "{{ _.base_url }}/admin/events"
 name: Event
 description: ""
-method: POST
+method: GET
 body:
   mimeType: application/json
-  text: |-
-    {
-    	"name": "aaa",
-    	"description": "description",
-    	"date": "2020-01-01"
-    }
+  text: ""
 parameters: []
 headers:
   - name: Content-Type
@@ -22,7 +17,7 @@ headers:
     id: pair_3a0b263b17204036ab46110535330ae9
 authentication:
   type: bearer
-  token: SExrHd2sPIu0IIa
+  token: "{{ _.admin_token }}"
 metaSortKey: -1631672049989.875
 isPrivate: false
 settingStoreCookies: true

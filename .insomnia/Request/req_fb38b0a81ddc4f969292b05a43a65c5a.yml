@@ -1,7 +1,7 @@
 _id: req_fb38b0a81ddc4f969292b05a43a65c5a
 type: Request
 parentId: fld_81fd3815dbda45deb4ba5c49db16e7ee
-modified: 1635304570179
+modified: 1635737050268
 created: 1635292719181
 url: "{{ _.base_url }}/student/classes"
 name: Classes
@@ -12,7 +12,7 @@ parameters: []
 headers: []
 authentication:
   type: bearer
-  token: fTcno1xtfUE3RJC
+  token: "{{ _.student_token }}"
 metaSortKey: -1630850498149.375
 isPrivate: false
 settingStoreCookies: true

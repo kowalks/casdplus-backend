@@ -1,9 +1,9 @@
 _id: req_0b07635610ca433ebdac4188f5fc342c
 type: Request
-parentId: fld_6776525d1b794745addf5256c426b475
-modified: 1635469964613
+parentId: fld_6cc071967ec04bc28a69d43d53f28118
+modified: 1635736189952
 created: 1635469852023
-url: "{{ _.base_url }}/admin/messages/2/"
+url: "{{ _.base_url }}/admin/messages/11/"
 name: Message
 description: ""
 method: PATCH
@@ -12,8 +12,8 @@ parameters: []
 headers: []
 authentication:
   type: bearer
-  token: SExrHd2sPIu0IIa
-metaSortKey: -1631672050003.9375
+  token: "{{ _.admin_token }}"
+metaSortKey: -1631672049958.625
 isPrivate: false
 settingStoreCookies: true
 settingSendCookies: true

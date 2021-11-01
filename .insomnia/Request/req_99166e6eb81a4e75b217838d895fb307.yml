@@ -1,7 +1,7 @@
 _id: req_99166e6eb81a4e75b217838d895fb307
 type: Request
 parentId: fld_81fd3815dbda45deb4ba5c49db16e7ee
-modified: 1635472709917
+modified: 1635737114949
 created: 1635471106024
 url: "{{ _.base_url }}/student/messages"
 name: MessagesQuery
@@ -19,12 +19,12 @@ parameters:
     description: ""
   - id: pair_9fb02e173bf44fd1b47c65bc6f7f01fb
     name: label_id
-    value: "2"
+    value: "1"
     description: ""
 headers: []
 authentication:
   type: bearer
-  token: 5klQ9I8raLx8lYT
+  token: "{{ _.student_token }}"
 metaSortKey: -1630850498009.9219
 isPrivate: false
 settingStoreCookies: true

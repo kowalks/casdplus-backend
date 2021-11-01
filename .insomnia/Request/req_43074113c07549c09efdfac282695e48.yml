@@ -1,19 +1,19 @@
-_id: req_f4800997c5414a82b6fd68909b0d44e4
+_id: req_43074113c07549c09efdfac282695e48
 type: Request
-parentId: fld_85cf9eaf961e4660a54ff6191c60ac7e
-modified: 1635737187109
-created: 1634242634404
-url: "{{ _.base_url }}/admin/"
-name: Info
+parentId: fld_3b3c2ad289604dec96be9fbd40c0c777
+modified: 1635736648626
+created: 1635734757843
+url: "{{ _.base_url }}/admin/students/111"
+name: Student
 description: ""
-method: GET
+method: DELETE
 body: {}
 parameters: []
 headers: []
 authentication:
   type: bearer
-  token: 85fQhsoP9iANKhJ
-metaSortKey: -1634211734080.8516
+  token: "{{ _.admin_token }}"
+metaSortKey: -1631672050043
 isPrivate: false
 settingStoreCookies: true
 settingSendCookies: true

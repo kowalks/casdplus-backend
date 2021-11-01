@@ -1,7 +1,7 @@
 _id: req_9ddd4a212819463e9077afaf1ca19231
 type: Request
-parentId: fld_6776525d1b794745addf5256c426b475
-modified: 1635301366618
+parentId: fld_3b3c2ad289604dec96be9fbd40c0c777
+modified: 1635736025366
 created: 1635301204604
 url: "{{ _.base_url }}/admin/students_bulk"
 name: Student Bulk
@@ -23,8 +23,8 @@ headers:
     id: pair_c116e4287102484194e1027500dd0a06
 authentication:
   type: bearer
-  token: 3UrE4umpHqkW2jh
-metaSortKey: -1631672050043
+  token: "{{ _.admin_token }}"
+metaSortKey: -1631672050068
 isPrivate: false
 settingStoreCookies: true
 settingSendCookies: true

@@ -1,9 +1,9 @@
 _id: req_7858f601339a437080537ae21555e540
 type: Request
-parentId: fld_6776525d1b794745addf5256c426b475
-modified: 1635470040029
+parentId: fld_6cc071967ec04bc28a69d43d53f28118
+modified: 1635737068115
 created: 1635300208382
-url: "{{ _.base_url }}/admin/classes/3/messages"
+url: "{{ _.base_url }}/admin/messages"
 name: Message
 description: ""
 method: POST
@@ -13,7 +13,8 @@ body:
     {
     	"title": "Title", 
     	"body": "Body",
-    	"admin_id": 1
+    	"admin_id": 1,
+    	"class_id": 1
     }
 parameters: []
 headers:
@@ -22,8 +23,8 @@ headers:
     id: pair_3a0b263b17204036ab46110535330ae9
 authentication:
   type: bearer
-  token: I3k7HWgxaDK4sc5
-metaSortKey: -1631672050018
+  token: "{{ _.admin_token }}"
+metaSortKey: -1631672049983.625
 isPrivate: false
 settingStoreCookies: true
 settingSendCookies: true

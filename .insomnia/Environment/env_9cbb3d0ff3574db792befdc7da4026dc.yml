@@ -1,14 +1,18 @@
 _id: env_9cbb3d0ff3574db792befdc7da4026dc
 type: Environment
 parentId: env_5f4bd920f01a43ccdc771aacb214de557563a250
-modified: 1634406199580
+modified: 1635736993963
 created: 1634405753732
 name: Local
 data:
   base_url: localhost:3000
+  admin_token: c6Btjio39Kz8H5Q
+  student_token: c4PssGTFQGefGcJ
 dataPropertyOrder:
   "&":
     - base_url
+    - admin_token
+    - student_token
 color: "#7d69cb"
 isPrivate: false
 metaSortKey: 1634405753732

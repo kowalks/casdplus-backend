@@ -1,7 +1,7 @@
 _id: req_b428d4aa134740dfad7c7f06098596d4
 type: Request
 parentId: fld_81fd3815dbda45deb4ba5c49db16e7ee
-modified: 1635471097247
+modified: 1635737076510
 created: 1635303910009
 url: "{{ _.base_url }}/student/messages"
 name: Messages
@@ -12,7 +12,7 @@ parameters: []
 headers: []
 authentication:
   type: bearer
-  token: 5klQ9I8raLx8lYT
+  token: "{{ _.student_token }}"
 metaSortKey: -1630850498029.8438
 isPrivate: false
 settingStoreCookies: true
