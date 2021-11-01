@@ -9,41 +9,7 @@ const { Op } = require("sequelize");
 const { parseFile } = require("fast-csv");
 
 module.exports = {
-  async index(req, res) {
-    const students = await Student.findAll();
-
-    return res.json(students);
-  },
-
-  async login(req, res) {
-    const { username, password } = req.body;
-
-    // sanity check
-    if (!username || !password) {
-      return res.status(400).send("Bad Request! Missing username or password.");
-    }
-
-    try {
-      let student = await Student.authenticate(username, password);
-      student = await student.authorize();
-      return res.json({ token: student.token.token });
-    } catch (err) {
-      console.log(err);
-      return res.status(406).json({ error: "Invalid username or password" });
-    }
-  },
-
-  async logout(req, res) {
-    [res, id] = await Student.validate(req, res);
-
-    if (!id) return res;
-
-    const token = req.headers.authorization.substring(7);
-
-    StudentToken.destroy({ where: { token } });
-
-    return res.status(200).send("OK");
-  },
+  // Student requests
 
   async store(req, res) {
     [res, id] = await Admin.validate(req, res);
@@ -131,7 +97,7 @@ module.exports = {
           return next(null, false, "Invalid birthday date.");
         return next(null, true);
       })
-      .on("error", (error) => console.log("AAA"))
+      .on("error", (error) => console.log(error))
       .on("data", (data) => promises.push(parseRow(data)))
       .on("data-invalid", (row, rowNumber, reason) => {
         console.log(`Invalid [rowNumber=${rowNumber}] [reason=${reason}]`);
@@ -151,6 +117,61 @@ module.exports = {
 
     // console.log(stream);
     return res;
+  },
+
+  async destroy(req, res) {
+    [res, id] = await Admin.validate(req, res);
+    if (!id) return res;
+
+    const { student_id } = req.params;
+    const student = await Student.findByPk(student_id);
+
+    if (!student)
+      return res.status(404).send("Bad request: student_id not found.")
+
+    student.destroy();
+
+    return res.status(200).send("Deleted.");
+  },
+
+  async students(req, res) {
+    [res, id] = await Admin.validate(req, res);
+    if (!id) return res;
+
+    const students = await Student.findAll();
+    return res.status(200).json(students);
+  },
+
+  // Student requests
+
+  async login(req, res) {
+    const { username, password } = req.body;
+
+    // sanity check
+    if (!username || !password) {
+      return res.status(400).send("Bad Request! Missing username or password.");
+    }
+
+    try {
+      let student = await Student.authenticate(username, password);
+      student = await student.authorize();
+      return res.json({ token: student.token.token });
+    } catch (err) {
+      console.log(err);
+      return res.status(406).json({ error: "Invalid username or password" });
+    }
+  },
+
+  async logout(req, res) {
+    [res, id] = await Student.validate(req, res);
+
+    if (!id) return res;
+
+    const token = req.headers.authorization.substring(7);
+
+    StudentToken.destroy({ where: { token } });
+
+    return res.status(200).send("OK");
   },
 
   async info(req, res) {
@@ -261,13 +282,5 @@ module.exports = {
     });
 
     return res.json(student.classes);
-  },
-
-  async students(req, res) {
-    [res, id] = await Admin.validate(req, res);
-    if (!id) return res;
-
-    const students = await Student.findAll();
-    return res.status(200).json(students);
   },
 };
