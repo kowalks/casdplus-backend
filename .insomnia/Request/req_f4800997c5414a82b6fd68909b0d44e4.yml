@@ -1,7 +1,7 @@
 _id: req_f4800997c5414a82b6fd68909b0d44e4
 type: Request
 parentId: fld_85cf9eaf961e4660a54ff6191c60ac7e
-modified: 1635737187109
+modified: 1635813343410
 created: 1634242634404
 url: "{{ _.base_url }}/admin/"
 name: Info
@@ -12,7 +12,7 @@ parameters: []
 headers: []
 authentication:
   type: bearer
-  token: 85fQhsoP9iANKhJ
+  token: "{{ _.admin_token }}"
 metaSortKey: -1634211734080.8516
 isPrivate: false
 settingStoreCookies: true

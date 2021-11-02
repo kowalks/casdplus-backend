@@ -1,10 +1,10 @@
-_id: req_c0e734def38345729860c22715ba71c0
+_id: req_5017b480de7b401e88870ce137f00cfd
 type: Request
 parentId: fld_81fd3815dbda45deb4ba5c49db16e7ee
-modified: 1635738077831
-created: 1635303900289
-url: "{{ _.base_url }}/student/events"
-name: Events
+modified: 1635819025778
+created: 1635818871718
+url: "{{ _.base_url }}/student/schedule"
+name: Schedule
 description: ""
 method: GET
 body: {}
@@ -13,7 +13,7 @@ headers: []
 authentication:
   type: bearer
   token: "{{ _.student_token }}"
-metaSortKey: -1630850498069.6875
+metaSortKey: -1630850497999.961
 isPrivate: false
 settingStoreCookies: true
 settingSendCookies: true

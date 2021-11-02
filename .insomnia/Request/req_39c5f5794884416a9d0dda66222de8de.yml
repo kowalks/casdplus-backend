@@ -1,7 +1,7 @@
 _id: req_39c5f5794884416a9d0dda66222de8de
 type: Request
 parentId: fld_6cc071967ec04bc28a69d43d53f28118
-modified: 1635736037448
+modified: 1635813524755
 created: 1635469511228
 url: "{{ _.base_url }}/admin/categorias"
 name: Categoria

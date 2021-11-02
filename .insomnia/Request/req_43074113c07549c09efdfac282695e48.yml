@@ -1,9 +1,9 @@
 _id: req_43074113c07549c09efdfac282695e48
 type: Request
 parentId: fld_3b3c2ad289604dec96be9fbd40c0c777
-modified: 1635736648626
+modified: 1635813490046
 created: 1635734757843
-url: "{{ _.base_url }}/admin/students/111"
+url: "{{ _.base_url }}/admin/students/4"
 name: Student
 description: ""
 method: DELETE

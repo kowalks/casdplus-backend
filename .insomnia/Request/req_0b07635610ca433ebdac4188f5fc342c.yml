@@ -1,9 +1,9 @@
 _id: req_0b07635610ca433ebdac4188f5fc342c
 type: Request
 parentId: fld_6cc071967ec04bc28a69d43d53f28118
-modified: 1635736189952
+modified: 1635813535440
 created: 1635469852023
-url: "{{ _.base_url }}/admin/messages/11/"
+url: "{{ _.base_url }}/admin/messages/21"
 name: Message
 description: ""
 method: PATCH

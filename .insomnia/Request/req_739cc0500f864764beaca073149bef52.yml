@@ -1,28 +1,24 @@
-_id: req_8566e9c70984423687708d054a62bd1a
+_id: req_739cc0500f864764beaca073149bef52
 type: Request
 parentId: fld_8a8616e1f5d54cd2bcb43ae81c77bce2
-modified: 1635817006578
-created: 1635301853470
-url: "{{ _.base_url }}/admin/classes"
-name: Class
+modified: 1635818714004
+created: 1635817774712
+url: "{{ _.base_url }}/admin/classes/1/schedule"
+name: Schedule
 description: ""
-method: POST
+method: GET
 body:
-  mimeType: application/json
-  text: |-
-    {
-    	"name": "testeteste",
-    	"schedule": "http://link.com"
-    }
+  mimeType: multipart/form-data
+  params: []
 parameters: []
 headers:
   - name: Content-Type
-    value: application/json
-    id: pair_78860886fe1e4daf9c293d95530b8f04
+    value: multipart/form-data
+    id: pair_a7e400eda08d444cafeb53302ec90398
 authentication:
   type: bearer
   token: "{{ _.admin_token }}"
-metaSortKey: -1632687923725.25
+metaSortKey: -1632687923700.25
 isPrivate: false
 settingStoreCookies: true
 settingSendCookies: true

@@ -1,31 +1,28 @@
-_id: req_a2b4b0d57c604708abe106b807e08962
+_id: req_c8347bde81e0452f8af0c816fb41a681
 type: Request
 parentId: fld_81fd3815dbda45deb4ba5c49db16e7ee
-modified: 1635821529734
-created: 1633826920013
-url: "{{ _.base_url }}/student/login"
-name: Login
+modified: 1635821532262
+created: 1635821379221
+url: "{{ _.base_url }}/student/absence"
+name: Absence
 description: ""
 method: POST
 body:
   mimeType: application/json
   text: |-
     {
-    	"username": "aluninho",
-    	"password": "aluninho"
+    	"date": "2021-01-01",
+    	"justification": "Meu cachorro comeu meu dever de casa."
     }
 parameters: []
 headers:
   - name: Content-Type
     value: application/json
-    id: pair_399abcf83661475883841b73c8c20077
+    id: pair_f6bc3c09dee84ef8907b95a1c373ac20
 authentication:
-  type: basic
-  useISO88591: false
-  disabled: true
-  username: ""
-  password: ""
-metaSortKey: -1630850498177.5
+  type: bearer
+  token: "{{ _.student_token }}"
+metaSortKey: -1630850497994.9805
 isPrivate: false
 settingStoreCookies: true
 settingSendCookies: true

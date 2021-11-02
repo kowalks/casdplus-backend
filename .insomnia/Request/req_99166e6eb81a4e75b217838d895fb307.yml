@@ -1,7 +1,7 @@
 _id: req_99166e6eb81a4e75b217838d895fb307
 type: Request
 parentId: fld_81fd3815dbda45deb4ba5c49db16e7ee
-modified: 1635737114949
+modified: 1635813666295
 created: 1635471106024
 url: "{{ _.base_url }}/student/messages"
 name: MessagesQuery
@@ -11,16 +11,18 @@ body: {}
 parameters:
   - id: pair_5fb5548343e94a4d857426ee7c55401e
     name: start_date
-    value: 2021-10-28
+    value: 2021-10-31
     description: ""
   - id: pair_9b28a19f204a43baa2e124811a8377c6
     name: end_date
-    value: 2021-10-30
+    value: 2021-11-02
     description: ""
+    disabled: false
   - id: pair_9fb02e173bf44fd1b47c65bc6f7f01fb
     name: label_id
-    value: "1"
+    value: "2"
     description: ""
+    disabled: false
 headers: []
 authentication:
   type: bearer

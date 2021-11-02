@@ -1,30 +1,31 @@
-_id: req_9ddd4a212819463e9077afaf1ca19231
+_id: req_8b64821e03144c249937f4a068f80bdc
 type: Request
-parentId: fld_3b3c2ad289604dec96be9fbd40c0c777
-modified: 1635813396778
-created: 1635301204604
-url: "{{ _.base_url }}/admin/students_bulk"
-name: Student Bulk
+parentId: fld_8a8616e1f5d54cd2bcb43ae81c77bce2
+modified: 1635818948318
+created: 1635816993400
+url: "{{ _.base_url }}/admin/classes/2/schedule"
+name: Schedule
 description: ""
-method: POST
+method: PATCH
 body:
   mimeType: multipart/form-data
   params:
-    - id: pair_0386b9fde47141769b44a3b660fbf248
+    - id: pair_d2c77ae588aa416ca71ad7e0474b6d6f
       name: file
       value: ""
       description: ""
       type: file
-      fileName: /home/kowalks/Desktop/arquivo.csv
+      multiline: null
+      fileName: /home/kowalks/Desktop/calendario.pdf
 parameters: []
 headers:
   - name: Content-Type
     value: multipart/form-data
-    id: pair_c116e4287102484194e1027500dd0a06
+    id: pair_a7e400eda08d444cafeb53302ec90398
 authentication:
   type: bearer
   token: "{{ _.admin_token }}"
-metaSortKey: -1631672050068
+metaSortKey: -1632687923675.25
 isPrivate: false
 settingStoreCookies: true
 settingSendCookies: true
