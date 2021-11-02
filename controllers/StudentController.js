@@ -267,7 +267,6 @@ module.exports = {
 
   async classes(req, res) {
     [res, id] = await Student.validate(req, res);
-
     if (!id) return res;
 
     const student = await Student.findByPk(id, {
@@ -282,5 +281,25 @@ module.exports = {
     });
 
     return res.json(student.classes);
+  },
+
+  async schedule(req, res) {
+    [res, id] = await Student.validate(req, res);
+    if (!id) return res;
+
+    const student = await Student.findByPk(id, {
+      attributes: [],
+      include: {
+        association: "classes",
+        attributes: ["id", "name", "schedule"],
+        through: {
+          attributes: [],
+        },
+      },
+    });
+  
+    if (!student.classes[0].schedule) return res.status(204).send('');
+
+    return res.sendFile(student.classes[0].schedule, { root: process.cwd() });
   },
 };
