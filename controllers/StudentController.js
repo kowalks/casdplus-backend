@@ -234,7 +234,7 @@ module.exports = {
     const class_ = await Class.findByPk(student.classes[0].id, {
       include: {
         association: "messages",
-        attributes: { exclude: ["id", "admin_id", "updatedAt"] },
+        attributes: { exclude: ["admin_id", "updatedAt"] },
         through: {
           attributes: [],
         },
@@ -244,7 +244,7 @@ module.exports = {
         },
         where: where,
       },
-      order: [["messages", "created_at", "DESC"]],
+      order: [["messages", "pin", "DESC"], ["messages", "created_at", "DESC"]],
     });
 
     return res.json(class_ ? class_.messages : []);
@@ -270,7 +270,6 @@ module.exports = {
 
   async classes(req, res) {
     [res, id] = await Student.validate(req, res);
-
     if (!id) return res;
 
     const student = await Student.findByPk(id, {
@@ -319,5 +318,25 @@ module.exports = {
       })
 
     return res.status(200).json(absence);
+  },
+  
+  async schedule(req, res) {
+    [res, id] = await Student.validate(req, res);
+    if (!id) return res;
+
+    const student = await Student.findByPk(id, {
+      attributes: [],
+      include: {
+        association: "classes",
+        attributes: ["id", "name", "schedule"],
+        through: {
+          attributes: [],
+        },
+      },
+    });
+  
+    if (!student.classes[0].schedule) return res.status(204).send('');
+
+    return res.sendFile(student.classes[0].schedule, { root: process.cwd() });
   },
 };
