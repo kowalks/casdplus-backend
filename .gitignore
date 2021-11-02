@@ -105,3 +105,4 @@ dist
 
 # Temp CSV files
 tmp/
+sendgrid.env

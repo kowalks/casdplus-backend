@@ -11,8 +11,12 @@ module.exports = {
         autoIncrement: true
      }, 
      student_id: {
-        type: DataTypes.INTEGER, 
-        allowNull:false
+      type: DataTypes.INTEGER, 
+      primaryKey:true, 
+      allowNull:false,
+      references: { model: 'students', key: 'id'},
+      onUpdate: 'CASCADE',
+      onDelete: 'CASCADE'
      }, 
      date: {
         type: DataTypes.DATEONLY

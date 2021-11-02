@@ -4,6 +4,9 @@ const StudentToken = require("../models/StudentToken");
 const Message = require("../models/Message");
 const Event = require("../models/Event");
 const Admin = require("../models/Admin");
+const Absence = require("../models/Absence");
+const sgMail = require('@sendgrid/mail')
+
 const { Op } = require("sequelize");
 
 const { parseFile } = require("fast-csv");
@@ -127,7 +130,7 @@ module.exports = {
     const student = await Student.findByPk(student_id);
 
     if (!student)
-      return res.status(404).send("Bad request: student_id not found.")
+      return res.status(404).send("Bad request: student_id not found.");
 
     student.destroy();
 
@@ -282,5 +285,39 @@ module.exports = {
     });
 
     return res.json(student.classes);
+  },
+
+  async absence(req, res) {
+    [res, id] = await Student.validate(req, res);
+
+    if (!id) return res;
+
+    const student = await Student.findByPk(id);
+
+    const { date, justification } = req.body;
+
+    const absence = await Absence.create({ student_id: id, date, justification });
+    const date_msg = new Date(date + 'T03:00:00Z').toLocaleDateString("pt-BR")
+
+    sgMail.setApiKey(process.env.SENDGRID_API_KEY)
+
+    const msg = {
+      to: 'casdplus@gmail.com', // Change to your recipient
+      from: 'casdplus@gmail.com', // Change to your verified sender
+      subject: 'Justificativa de Falta - ' + date_msg,
+      html: "<b>Aluno:</b> " + student.first_name + ' ' + student.last_name + "<br>" +
+            "<b>Data:</b> " + date_msg + "<br>" +
+            justification
+    }
+    sgMail
+      .send(msg)
+      .then(() => {
+        console.log('Email sent')
+      })
+      .catch((error) => {
+        console.error(error)
+      })
+
+    return res.status(200).json(absence);
   },
 };

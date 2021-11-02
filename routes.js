@@ -46,6 +46,8 @@ routes.get("/student/classes", StudentController.classes);
 routes.post("/student/login", StudentController.login);
 routes.delete("/student/logout", StudentController.logout);
 
+routes.post("/student/absence", StudentController.absence);
+
 // Hello World
 routes.get("/", function (req, res) {
   res.send("<h1>Hello World </h1>");
