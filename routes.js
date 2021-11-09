@@ -7,8 +7,8 @@ const AdminController = require("./controllers/AdminController");
 const EventController = require("./controllers/EventController");
 
 const multer = require("multer");
-const Message = require("./models/Message");
 const upload = multer({ dest: "tmp/" });
+const schedule = multer({ dest: "schedule/"});
 
 const routes = express.Router();
 
@@ -26,6 +26,8 @@ routes.delete("/admin/students/:student_id", StudentController.destroy);
 
 routes.post("/admin/classes", ClassController.store);
 routes.get("/admin/classes", ClassController.classes);
+routes.patch("/admin/classes/:class_id/schedule", schedule.single("file"), ClassController.newSchedule);
+routes.get("/admin/classes/:class_id/schedule", ClassController.schedule)
 
 routes.get("/admin/messages", MessageController.messages);
 routes.get("/admin/categorias", MessageController.labels);
@@ -43,8 +45,11 @@ routes.get("/student/", StudentController.info);
 routes.get("/student/messages", StudentController.messages);
 routes.get("/student/events", StudentController.events);
 routes.get("/student/classes", StudentController.classes);
+routes.get("/student/schedule", StudentController.schedule);
 routes.post("/student/login", StudentController.login);
 routes.delete("/student/logout", StudentController.logout);
+
+routes.post("/student/absence", StudentController.absence);
 
 // Hello World
 routes.get("/", function (req, res) {
