@@ -3,6 +3,8 @@ const Message = require("../models/Message");
 const Admin = require("../models/Admin");
 const Label = require("../models/Label");
 
+const { Op } = require("sequelize");
+
 module.exports = {
   async store(req, res) {
     [res, id] = await Admin.validate(req, res);
@@ -36,8 +38,20 @@ module.exports = {
 
     if (!id) return res;
 
+    start_date = req.query.start_date ? req.query.start_date : "2000-01-01";
+    end_date = req.query.end_date ? req.query.end_date : "3000-01-01";
+
+    var where = {
+      created_at: { [Op.between]: [start_date, end_date] },
+    };
+
+    if (req.query.label_id) where.label_id = req.query.label_id;
+    var inner_where = {}
+    if (req.query.class_id) inner_where.id = req.query.class_id;
+
     const messages = await Message.findAll({
-      attributes: ["id", "title", "pin"],
+      include: {association: "classes", where: inner_where, attributes: []},
+      where: where,
       order: [
         ['id', 'DESC'],
        ['created_at', 'DESC'] 
