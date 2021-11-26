@@ -4,7 +4,8 @@ class Absence extends Model {
    static init(connection) {
       super.init(            {
             date: DataTypes.DATEONLY,
-            justification: DataTypes.STRING
+            justification: DataTypes.STRING,
+            file: DataTypes.STRING
       }, {
             sequelize: connection,
             tableName: 'absence',

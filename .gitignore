@@ -103,7 +103,10 @@ dist
 # TernJS port file
 .tern-port
 
-# Temp CSV files
+# Temp files
 tmp/
-sendgrid.env
 schedule/
+justify/
+
+# ENV files
+sendgrid.env

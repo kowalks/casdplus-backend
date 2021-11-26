@@ -9,6 +9,7 @@ const EventController = require("./controllers/EventController");
 const multer = require("multer");
 const upload = multer({ dest: "tmp/" });
 const schedule = multer({ dest: "schedule/"});
+const justify = multer({ dest: "justify/"});
 
 const routes = express.Router();
 
@@ -48,8 +49,8 @@ routes.get("/student/classes", StudentController.classes);
 routes.get("/student/schedule", StudentController.schedule);
 routes.post("/student/login", StudentController.login);
 routes.delete("/student/logout", StudentController.logout);
+routes.post("/student/absence", justify.single("file"), StudentController.absence);
 
-routes.post("/student/absence", StudentController.absence);
 
 // Hello World
 routes.get("/", function (req, res) {
