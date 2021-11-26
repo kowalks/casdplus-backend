@@ -170,7 +170,31 @@ module.exports = {
     [res, id] = await Admin.validate(req, res);
     if (!id) return res;
 
-    const students = await Student.findAll();
+    class_id = req.query.class_id
+
+    let class_ = null
+    if(class_id){
+      class_ = await Class.findByPk(class_id,{
+        include: {
+          association: "students",
+          attributes: {exclude: ["password"]},
+          through: {
+            attributes: [],
+          },
+        },
+      });
+    }
+
+    let students = null
+
+    if(!class_){
+      students = await Student.findAll({attributes: {exclude: ["password"]}});
+    }
+    else{
+      students = await class_.students
+      students = students[0]
+    }
+
     return res.status(200).json(students);
   },
 
