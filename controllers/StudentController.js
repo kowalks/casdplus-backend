@@ -38,14 +38,23 @@ module.exports = {
       !username
     )
       return res.status(406).send("Please provide full information.");
+      
+    if (!Student.validate_age(birthday)){
+      return res.status(406).send("birthday not valid!");
+    }
 
     const class_ = await Class.findByPk(class_id);
 
     if (!class_) {
       return res.status(406).send("Class not found");
     }
+    
+    let query = {
+      [Op.or] : [{ email: email }, { username: username}]
+    }
+    const student_found = await Student.findOne({ where: query });
 
-    const student_found = await Student.findOne({ where: { email: email } });
+
     if (student_found == null) {
       const student = await Student.create({
         first_name,
@@ -57,6 +66,11 @@ module.exports = {
       });
       class_.addStudent(student);
       return res.json(student);
+    }
+
+    if (student_found.username == username)
+    {
+      return res.status(406).send("username already existis");
     }
 
     return res.status(406).send("email already existis");
@@ -81,6 +95,13 @@ module.exports = {
         } catch (err) {
           data.class = null;
         }
+
+        let query = {
+          [Op.or] : [{ email: data.email }, { username: data.username}]
+        }
+
+        data.student_found = await Student.findOne({ where: query });
+
         return next(null, data);
       })
       .validate((data, next) => {
@@ -97,7 +118,15 @@ module.exports = {
         )
           return next(null, false, "Missing information.");
         if (new Date(data.birthday).toString() === "Invalid Date")
+          return next(null, false, "Wrong birthday date format.");
+        if (!Student.validate_age(data.birthday))
           return next(null, false, "Invalid birthday date.");
+        if (data.student_found){
+          if (data.student_found.email == data.email)
+            return next(null, false, "Email already exists.");
+          return next(null, false, "Username already exists.");
+        }
+          
         return next(null, true);
       })
       .on("error", (error) => console.log(error))

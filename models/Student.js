@@ -66,6 +66,16 @@ class Student extends Model {
     const id = student_token.student_id;
     return [res.status(200), id];
   }
+
+  static validate_age(birthday){
+    let birthday_date = new Date(birthday);
+    let month_diff = Date.now() - birthday_date.getTime();
+    let age_dt = new Date(month_diff);
+    let year = age_dt.getUTCFullYear();
+    let age = (year - 1970)
+
+    return (age >= 0 && age < 100)
+  }
 }
 
 module.exports = Student;
