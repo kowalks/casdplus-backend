@@ -52,6 +52,9 @@ class Student extends Model {
 
   static async validate(req, res) {
     const bearer_token = req.headers.authorization;
+
+    console.log(bearer_token);
+
     if (bearer_token == null) {
       return [res.status(401).send("No token provided."), null];
     }
