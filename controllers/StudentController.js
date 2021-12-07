@@ -343,7 +343,7 @@ module.exports = {
   async absence(req, res) {
     [res, id] = await Student.validate(req, res);
     if (!id) return res;
-
+    console.log(req)
     const student = await Student.findByPk(id);
     const { date, justification } = req.body;
 
