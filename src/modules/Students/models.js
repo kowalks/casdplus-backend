@@ -142,8 +142,39 @@ Absence.associate = function(models) {
   });
 }
 
+class Student_class extends Model {
+  static init(connection) {
+    super.init(
+      {
+        class_id:DataTypes.INTEGER,
+        student_id:DataTypes.INTEGER
+      },
+      {
+        sequelize: connection,
+        timestamps: true,
+        underscored: true,
+        tableName: "student_class",
+        freezeTableName: true,
+      }
+    );
+  }
+}
+
+class Student_exam extends Model {
+  static init(connection) {
+      super.init(            {
+       // class_id:DataTypes.INTEGER,
+       // message_id:DataTypes.INTEGER
+      }, {
+          sequelize: connection
+      })
+  }
+}
+
 module.exports = { 
   Student,
   StudentToken, 
   Absence,
+  Student_class,
+  Student_exam,
 };
