@@ -1,7 +1,6 @@
-const Class = require("../models/Class");
-const Event = require("../models/Event");
-const Admin = require("../models/Admin");
-const Student = require("../models/Student");
+const { Class } = require("../Class/models");
+const { Event } = require("./models");
+const { Admin } = require("../Admin/models");
 
 module.exports = {
   async store(req, res) {

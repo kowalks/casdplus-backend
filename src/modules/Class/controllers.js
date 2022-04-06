@@ -1,6 +1,5 @@
-const Class = require("../models/Class");
-const Admin = require("../models/Admin");
-const { classes } = require("./StudentController");
+const { Class } = require("./models");
+const { Admin } = require("../Admin/models");
 
 module.exports = {
   async store(req, res) {

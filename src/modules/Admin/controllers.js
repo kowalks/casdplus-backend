@@ -1,8 +1,7 @@
-const Admin = require("../models/Admin");
-const AdminToken = require("../models/AdminToken");
+
+const { Admin, AdminToken } = require("./models");
+const { Label, Message } = require("../Messages/models");
 const csv = require("fast-csv");
-const Label = require("../models/Label");
-const Message = require("../models/Message");
 
 module.exports = {
   async store(req, res) {
