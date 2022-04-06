@@ -1,10 +1,10 @@
 const express = require("express");
 
-const StudentController = require("./controllers/StudentController");
-const ClassController = require("./controllers/ClassController");
-const MessageController = require("./controllers/MessageController");
-const AdminController = require("./controllers/AdminController");
-const EventController = require("./controllers/EventController");
+const StudentController = require("./Students/controllers");
+const ClassController = require("./Class/controllers");
+const MessageController = require("./Messages/controllers");
+const AdminController = require("./Admin/controllers");
+const EventController = require("./Events/controllers");
 
 const multer = require("multer");
 const upload = multer({ dest: "tmp/" });
