@@ -50,7 +50,23 @@ class Message_class extends Model {
   }
 }
 
+class Label extends Model {
+  static init(connection) {
+    super.init(
+      {
+        label: DataTypes.STRING,
+      },
+      {
+        sequelize: connection,
+        tableName: "labels",
+        freezeTableName: true,
+      }
+    );
+  }
+}
+
 module.exports = { 
   Message,
-  Message_class, 
+  Message_class,
+  Label, 
 };
