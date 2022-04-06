@@ -36,4 +36,6 @@ class Class extends Model {
   }
 }
 
-module.exports = Class;
+module.exports = {
+  Class,
+};

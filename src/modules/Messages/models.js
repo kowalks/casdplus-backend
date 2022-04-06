@@ -34,4 +34,39 @@ class Message extends Model {
   }
 }
 
-module.exports = Message;
+class Message_class extends Model {
+  static init(connection) {
+    super.init(
+      {
+        // class_id:DataTypes.INTEGER,
+        // message_id:DataTypes.INTEGER
+      },
+      {
+        sequelize: connection,
+        timestamps: true,
+        underscored: true
+      }
+    );
+  }
+}
+
+class Label extends Model {
+  static init(connection) {
+    super.init(
+      {
+        label: DataTypes.STRING,
+      },
+      {
+        sequelize: connection,
+        tableName: "labels",
+        freezeTableName: true,
+      }
+    );
+  }
+}
+
+module.exports = { 
+  Message,
+  Message_class,
+  Label, 
+};

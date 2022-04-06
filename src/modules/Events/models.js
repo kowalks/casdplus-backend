@@ -1,5 +1,4 @@
 const { Model, DataTypes } = require("sequelize");
-
 class Event extends Model {
   static init(connection) {
     super.init(
@@ -24,4 +23,6 @@ Event.associate = function (models) {
   });
 };
 
-module.exports = Event;
+module.exports = {
+  Event,
+};

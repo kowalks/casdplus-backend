@@ -1,7 +1,6 @@
-const Class = require("../models/Class");
-const Message = require("../models/Message");
-const Admin = require("../models/Admin");
-const Label = require("../models/Label");
+const { Class } = require("../Class/models");
+const { Message, Label } = require("./models");
+const { Admin } = require("../Admin/models");
 
 const { Op } = require("sequelize");
 

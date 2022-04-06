@@ -1,10 +1,8 @@
-const Student = require("../models/Student");
-const Class = require("../models/Class");
-const StudentToken = require("../models/StudentToken");
-const Message = require("../models/Message");
-const Event = require("../models/Event");
-const Admin = require("../models/Admin");
-const Absence = require("../models/Absence");
+const { Student, StudentToken, Absence } = require("./models");
+const { Class } = require("../Class/models");
+const { Admin } = require("../Admin/models");
+const { Event } = require("../Events/models");
+
 const sgMail = require('@sendgrid/mail')
 const fs = require('fs');
 
