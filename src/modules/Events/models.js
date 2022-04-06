@@ -1,3 +1,4 @@
+const { Model, DataTypes } = require("sequelize");
 class Event extends Model {
   static init(connection) {
     super.init(

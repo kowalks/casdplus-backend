@@ -1,18 +1,13 @@
 const Sequelize = require("sequelize");
 
-const Student = require("../models/Student");
-const Class = require("../models/Class");
-const Event = require("../models/Event");
-const Absence = require("../models/Absence");
-const Question = require("../models/Question");
-const Exam = require("../models/Exam");
-const Message = require("../models/Message");
-const Admin = require("../models/Admin");
-const AdminToken = require("../models/AdminToken");
-const StudentToken = require("../models/StudentToken");
-const Label = require("../models/Label");
+const { Student, Absence, StudentToken }= require("../modules/Students/models");
+const { Class } = require("../modules/Class/models");
+const { Event } = require("../modules/Events/models");
+const { Exam, Question } = require("../modules/Exams/models");
+const { Message, Label } = require("../modules/Messages/models");
+const { Admin, AdminToken }= require("../modules/Admin/models");
 
-const config = require("../config/config.json");
+const config = require("../../config/config.json");
 
 if (process.env.DATABASE_URL) {
   console.log("Estou fazendo tudo certo :)");
