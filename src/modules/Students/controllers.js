@@ -402,13 +402,13 @@ module.exports = {
   },
    async recoverPassword(request, response){
     try {
-      const student = await Srudent.findOne({ email: request.body.email });
+      const student = await Student.findOne({ email: request.body.email });
   
       if (!student) {
         return response.status(404).send({ error: "Usuário não encontrado" });
       }
   
-      await student.generateTokenForRecoverPassword();
+      await Student.generateTokenForRecoverPassword(student);
       recoverPassword(user.email, user.name, user.resetPasswordToken);
   
       response.status(200).send({

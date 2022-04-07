@@ -1,0 +1,36 @@
+{
+  "development": {
+    "username": "test",
+    "password": "test",
+    "database": "casdplus",
+    "host": "localhost",
+    "dialect": "postgres",
+    "port": 15432,
+    "define": {
+      "timestamps": true,
+      "underscored": true
+    },
+    "pool": null,
+    "hotst": "localhost",
+    "logging": false
+  },
+
+  
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "use_env_variable": "DATABASE_URL",
+    "dialect": "postgres",
+    "dialectOptions": {
+      "ssl": {
+        "require": true,
+        "rejectUnauthorized": false
+      }
+    }
+  }
+}

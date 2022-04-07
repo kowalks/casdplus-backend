@@ -74,7 +74,7 @@ class Student extends Model {
   }
 
   static async authenticate(username, password) {
-    const student = await Student.findOne({ where: { username } });
+    const student = await Student.findOne({ where: { username} });
 
     if (password == student.password) {
       return student;
@@ -93,8 +93,8 @@ class Student extends Model {
     return { student, token };
   }
 
-  static async generateTokenForRecoverPassword() {
-    const student = this;
+  static async generateTokenForRecoverPassword(student) {
+    
 
     student.resetPasswordToken = crypto.randomBytes(20).toString("hex");
 

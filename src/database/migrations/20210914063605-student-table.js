@@ -30,11 +30,11 @@ module.exports = {
         type: DataTypes.STRING,
         allowNull: false
      },
-     recoverPasswordToken:{
+     recover_password_token:{
       type: DataTypes.STRING,
       allowNull: true
      },
-     recoverPasswordExpires:{
+     recover_password_expires:{
         type: DataTypes.DATEONLY,
         allowNull: true
      },
