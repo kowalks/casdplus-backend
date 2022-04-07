@@ -400,4 +400,52 @@ module.exports = {
 
     return res.sendFile(student.classes[0].schedule, { root: process.cwd() });
   },
+   async recoverPassword(request, response){
+    try {
+      const student = await Srudent.findOne({ email: request.body.email });
+  
+      if (!student) {
+        return response.status(404).send({ error: "Usuário não encontrado" });
+      }
+  
+      await student.generateTokenForRecoverPassword();
+      recoverPassword(user.email, user.name, user.resetPasswordToken);
+  
+      response.status(200).send({
+        message:
+          "Um email para a mudança de password foi enviado para " +
+          student.email +
+          "."
+      });
+  
+    } catch (error) {
+      response.status(500).send({ error: error.message });
+    }
+  },
+  
+  async resetPassword (request, response){
+    try {
+      const student = await Student.findOne({
+        token: request.params.token,
+        resetPasswordExpires: { $gt: moment.tz("America/Sao_Paulo").toDate() }
+      });
+  
+      if (!user) {
+        return response.status(401).send({ error: "Token inválido ou expirado" });
+      }
+  
+      //Set the new password
+      student.password = request.body.password;
+      student.resetPasswordToken = undefined;
+      student.resetPasswordExpires = undefined;
+  
+      await student.save();
+      
+      response.status(200).send();
+    } catch (error) {
+      response.status(500).send({ error: error.message });
+    }
+  },
+  
+
 };

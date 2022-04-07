@@ -1,4 +1,8 @@
 const { Model, DataTypes } = require("sequelize");
+const crypto = require("crypto");
+const moment = require("moment-timezone");
+const sendEmail = require("../../utils/sendEmail");
+
 class StudentToken extends Model {
   static init(connection) {
     super.init(
@@ -48,6 +52,8 @@ class Student extends Model {
         username: DataTypes.STRING,
         birthday: DataTypes.DATEONLY,
         password: DataTypes.STRING,
+        recoverPasswordToken: DataTypes.STRING,
+        recoverPasswordExpires: DataTypes.DATEONLY,
       },
       {
         sequelize: connection,
@@ -85,6 +91,43 @@ class Student extends Model {
     await student.addStudentToken(token);
 
     return { student, token };
+  }
+
+  static async generateTokenForRecoverPassword() {
+    const student = this;
+
+    student.resetPasswordToken = crypto.randomBytes(20).toString("hex");
+
+    student.resetPasswordExpires = moment
+    .tz("America/Sao_Paulo")
+    .add(1, "hours")
+    .toDate();
+
+    await student.save();
+  }
+
+  static async sendRecoverPasswordEmail(){
+    const student = this;
+    const name = student.name;
+    const email = student.email;
+    const token = student.resetPasswordToken;
+
+    const link = `${process.env.CLIENT_URL}/resetPassword/${token}`;
+    const subject = "Mudança de senha";
+    const content = `<p>Olá ${name}</p> <p>Por favor clique no seguinte botão para modificar sua senha.</p>
+  
+    <p><b>Caso a senha não seja modificada em duas horas, será necessário gerar
+    outra solicitação. </b>  </p>
+    
+    <p> <br></p> 
+    
+    <a href=${link} style= " background-color: #1D1D1D; box-shadow: 0 5px 0 darkred; color: white; padding: 1em 1.5em; position: relative;
+    ">Clique Aqui</a> 
+  
+    <p><br>Caso a mudança não tenha sido solicitada, ignore esse 
+    email e a senha continuará a ser a mesma</p>`;
+  
+    sendEmail(content, email, subject);
   }
 
   static async validate(req, res) {

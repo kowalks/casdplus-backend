@@ -1,60 +1,21 @@
 const express = require("express");
 
-const StudentController = require("./modules/Students/controllers");
-const ClassController = require("./modules/Class/controllers");
-const MessageController = require("./modules/Messages/controllers");
-const AdminController = require("./modules/Admin/controllers");
-const EventController = require("./modules/Events/controllers");
-
-const multer = require("multer");
-const upload = multer({ dest: "tmp/" });
-const schedule = multer({ dest: "schedule/"});
-const justify = multer({ dest: "justify/"});
+const StudentRouter = require("./modules/Students/routes");
+const ClassRouter = require("./modules/Class/routes");
+const MessageRouter = require("./modules/Messages/routes");
+const AdminRouter = require("./modules/Admin/routes");
+const EventRouter = require("./modules/Events/routes");
 
 const routes = express.Router();
-
-// Admin routes
-routes.post("/admin/login", AdminController.login);
-routes.delete("/admin/logout", AdminController.logout);
-
-routes.get("/admin/", AdminController.info);
-routes.post("/admin/", AdminController.store);
-
-routes.post("/admin/students", StudentController.store);
-routes.get("/admin/students", StudentController.students);
-routes.post("/admin/students_bulk", upload.single("file"), StudentController.bulk_store);
-routes.delete("/admin/students/:student_id", StudentController.destroy);
-
-routes.post("/admin/classes", ClassController.store);
-routes.get("/admin/classes", ClassController.classes);
-routes.patch("/admin/classes/:class_id/schedule", schedule.single("file"), ClassController.newSchedule);
-routes.get("/admin/classes/:class_id/schedule", ClassController.schedule)
-
-routes.get("/admin/messages", MessageController.messages);
-routes.get("/admin/categorias", MessageController.labels);
-routes.post("/admin/messages", MessageController.store);
-routes.patch("/admin/messages/:message_id", MessageController.pin);
-routes.delete("/admin/messages/:message_id", MessageController.destroy);
-
-routes.get("/admin/events", EventController.events);
-routes.post("/admin/events", EventController.store);
-routes.delete("/admin/events/:event_id", EventController.destroy);
-
-// Student routes
-
-routes.get("/student/", StudentController.info);
-routes.get("/student/messages", StudentController.messages);
-routes.get("/student/events", StudentController.events);
-routes.get("/student/classes", StudentController.classes);
-routes.get("/student/schedule", StudentController.schedule);
-routes.post("/student/login", StudentController.login);
-routes.delete("/student/logout", StudentController.logout);
-routes.post("/student/absence", justify.single("file"), StudentController.absence);
-
+routes.use(StudentRouter);
+routes.use(AdminRouter);
+routes.use(EventRouter);
+routes.use(MessageRouter);
+routes.use(ClassRouter);
 
 // Hello World
 routes.get("/", function (req, res) {
-  res.send("<h1>Hello World </h1>");
+  res.send("<h1>:)</h1>");
 });
 
 module.exports = routes;

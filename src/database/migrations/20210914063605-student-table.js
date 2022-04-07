@@ -25,26 +25,31 @@ module.exports = {
      username: {
       type: DataTypes.STRING,
       allowNull: false
-   },
+     },
      password: {
         type: DataTypes.STRING,
         allowNull: false
      },
-
-     email: {
+     recoverPasswordToken:{
+      type: DataTypes.STRING,
+      allowNull: true
+     },
+     recoverPasswordExpires:{
+        type: DataTypes.DATEONLY,
+        allowNull: true
+     },
+     email:{
          type: DataTypes.STRING,
          allowNull: false
      },
-
     created_at:{
       type: DataTypes.DATE,
-      allowNull: false,
+      allowNull: false
     },
-
     updated_at: {
       type: DataTypes.DATE,
       allowNull: false
-    }
+    },
   });
 
   },
